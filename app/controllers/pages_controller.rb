@@ -3,4 +3,16 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def trendsetters_index
+
+  end
+
+  def trendsetters_show
+
+  end
+
+  def myspace
+    
+  end
 end
