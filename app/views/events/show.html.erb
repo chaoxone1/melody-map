@@ -1,0 +1,42 @@
+<div class="container show-event-page">
+  <div class="row">
+    <!-- Left Column -->
+    <div class="col-md-8">
+      <!-- Event Picture -->
+      <div class="card mb-4">
+        <div class="card-body text-center">
+          <img src="https://entoria-metal.de/wp-content/themes/yootheme/cache/d3/albtraumnacht-vol6-muenchen-d3fb2958.webp" alt="Event Picture" class="img-fluid">
+        </div>
+      </div>
+
+      <!-- Event Information & Description -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h3>Information</h3>
+          <p><%= @event.description %></p>
+          <!-- Bookmark would go here -->
+        </div>
+      </div>
+
+      <!-- Creator Information -->
+      <div class="card">
+        <div class="card-body">
+          <h3>Creator of the event information</h3>
+          <p><%= @event.user %> (<%= @event.user.email %>)</p>
+          <p><%= @event.bookmarks.count %> People bookmarked it</p>
+          <p>Number of followers: <%= @event.followers.count %></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column (Map) -->
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h3>Map</h3>
+          <div style="width: 100%; height: 300px;" data-controller="map" data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+.show-event-page {
+  margin-top: 20px;
+}
+
+.show-event-page .card {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+}
+
+.show-event-page .card-body {
+  padding: 20px;
+}
+
+.show-event-page .card h3 {
+  margin-bottom: 20px;
+}
+
+.show-event-page img.img-fluid {
+  max-height: 400px;
+  object-fit: cover;
+}
+
+.show-event-page .card-body p {
+  font-size: 16px;
+  color: #333;
+}
+
+.show-event-page .col-md-4 .card-body {
+  height: 100%;
+}
