@@ -1,24 +1,53 @@
-<h1>Events</h1>
-<% @events.each do |event|%>
-<p><%= event.name  %></p>
-<p><%= event.location  %></p>
-<%end %>
-
-
-<div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-
-<%= form_with url: events_path, method: :get, local: true do %>
-  <div class="form-group">
-    <%= label_tag :query, "Search Events" %>
-    <%= text_field_tag :query, params[:query], class: "form-control" %>
+<div class="d-block">
+  <div class="container">
+    <br/>
+	<div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
+      <form class="card card-sm">
+        <div class="card-body row no-gutters align-items-center">
+          <div class="col">
+            <%= form_with url: events_path, method: :get, local: true do %>
+              <div class="form-group">
+                <%= label_tag :query, "Search Events" %>
+                <%= text_field_tag :query, params[:query], class: "form-control" %>
+              </div>
+            <% end %>
+          </div>
+          <div class="col-auto">
+            <button class="btn btn-lg btn-success" type="submit" style="margin-right: 10px; margin-top: 15px;">Search</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    </div>
   </div>
-  <div class="form-group">
-    <%= submit_tag "Search", class: "btn btn-primary" %>
+</div>
+<div class="d-flex">
+  <div class="col-8">
+    <h1>Events</h1>
+      <% @events.each do |event|%>
+      <p><%= event.name  %></p>
+      <p style="background-color:green;"><%= event.category  %></p>
+      <p><%= event.location  %></p>
+    <%end %>
   </div>
-<% end %>
+    <div class="col-4">
+      <div style="width: 100%; height: 600px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
 
 <%= cl_image_tag("zpa0wxubcfvrpru8b4lb",
       width: 400, height: 300, crop: :fill) %>
