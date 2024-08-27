@@ -1,11 +1,28 @@
 class EventsController < ApplicationController
-
+  skip_before_action :authenticate_user!, only: [ :index, :show ]
   def index
-    @events = Event.all
+    if params[:query].present?
+      @events = Event.search_by_name_and_category(params[:query])
+    else
+      @events = Event.all
+    end
+
+    # Map loading for showing locations of Events
+    @markers = @events.geocoded.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude
+      }
+    end
   end
 
   def show
+    @event = Event.find(params[:id])
 
+    @markers = [{
+      lat: @event.latitude,
+      lng: @event.longitude
+    }]
   end
 
   def create
@@ -18,10 +35,20 @@ class EventsController < ApplicationController
   end
 
   def destroy
-
+    @event = Event.find(params[:id])
+    @event.destroy
   end
 
   def my_events
 
+  end
+
+  private
+  def set_events
+    @event = Event.find(params[:id])
+  end
+
+  def events_params
+    params.require(:event).permit(:title, :description, :photo)
   end
 end

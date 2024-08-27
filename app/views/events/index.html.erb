@@ -3,3 +3,22 @@
 <p><%= event.name  %></p>
 <p><%= event.location  %></p>
 <%end %>
+
+
+<div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+<%= form_with url: events_path, method: :get, local: true do %>
+  <div class="form-group">
+    <%= label_tag :query, "Search Events" %>
+    <%= text_field_tag :query, params[:query], class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= cl_image_tag("zpa0wxubcfvrpru8b4lb",
+      width: 400, height: 300, crop: :fill) %>
