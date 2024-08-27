@@ -1,7 +1,11 @@
 class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
   def index
-    @events = Event.all
+    if params[:query].present?
+      @events = Event.search_by_name_and_category(params[:query])
+    else
+      @events = Event.all
+    end
 
     # Map loading for showing locations of Events
     @markers = @events.geocoded.map do |event|
