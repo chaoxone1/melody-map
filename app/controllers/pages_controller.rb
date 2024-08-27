@@ -5,7 +5,28 @@ class PagesController < ApplicationController
   end
 
   def trendsetters_index
+    @top_users = User.joins(:followers)
+    .group('users.id')
+    .order('COUNT(followers.id) DESC')
+    .limit(10)
+  end
 
+  def trendsetters_show
+    # 1. List of top 10 users with the most follows
+    @top_users = User.joins(:followers)
+                     .group('users.id')
+                     .order('COUNT(followers.id) DESC')
+                     .limit(10)
+
+    # For each top user, also get the number of followers, upcoming events, and past events
+    @users_data = @top_users.map do |user|
+      {
+        user: user,
+        followers_count: user.followers.count,
+        upcoming_events: user.events.where('date >= ?', Date.today).order(date: :asc),
+        past_events: user.events.where('date < ?', Date.today).order(date: :desc)
+      }
+    end
   end
 
   def trendsetters_show
@@ -13,6 +34,7 @@ class PagesController < ApplicationController
   end
 
   def myspace
-    
+
   end
+
 end
