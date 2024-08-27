@@ -40,7 +40,7 @@ class EventsController < ApplicationController
   end
 
   def my_events
-
+    @events = current_user.events
   end
 
   private
@@ -49,6 +49,6 @@ class EventsController < ApplicationController
   end
 
   def events_params
-    params.require(:event).permit(:title, :description, :photo)
+    params.require(:event).permit(:title, :description, :date, :photo)
   end
 end
