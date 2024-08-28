@@ -28,7 +28,12 @@
               <p class="card-text">Date: Not specified</p>
             <% end %>
             <% if current_user %>
-              <%= button_to 'Bookmark', bookmark_event_path(@event), method: :post, class: 'btn btn-primary bookmark-button', id:"button-bookmark" %>
+              <%#= button_to 'Bookmark', bookmark_event_path(@event), method: :post, class: 'btn btn-primary bookmark-button', id:"button-bookmark" %>
+              <% if current_user.favorited?(@event) %>
+                <%= button_to 'Unbookmark it', unfavorite_event_path(@event), method: :delete %>
+              <% else %>
+                <%= button_to 'Bookmark', favorite_event_path(@event), method: :post %>
+              <% end %>
             <% end %>
           </div>
         </div>
