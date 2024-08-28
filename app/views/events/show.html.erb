@@ -8,52 +8,54 @@
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
 
- <div class="container-fluid">
-    <div class="row">
-      <!-- Event Information and Creator Placeholder Cards -->
-      <div class="col-md-8 content-container">
+<div class="container">
+    <!-- Top Section: Image and Map -->
+    <div class="top-section">
+      <div class="image-map-container">
         <!-- Event Picture -->
-        <div class="card">
-          <img src="https://entoria-metal.de/wp-content/themes/yootheme/cache/21/albtraumnacht-vol6-muenchen-21b4703b.jpeg" class="card-img-top" alt="<%= @event.name %>">
+        <div class="card image-card">
+          <img src="https://entoria-metal.de/wp-content/themes/yootheme/cache/21/albtraumnacht-vol6-muenchen-21b4703b.jpeg" class="event-image" alt="<%= @event.name %>">
         </div>
 
-        <!-- Event Information -->
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title"><%= @event.name %></h5>
-            <p class="card-text"><%= @event.description %></p>
-            <% if @event.date.present? %>
-              <p class="card-text">Date: <%= @event.date.strftime("%B %d, %Y") %></p>
-            <% else %>
-              <p class="card-text">Date: Not specified</p>
-            <% end %>
-            <% if current_user %>
-              <%= button_to 'Bookmark', bookmark_event_path(@event), method: :post, class: 'btn btn-primary bookmark-button', id:"button-bookmark" %>
-            <% end %>
-          </div>
-        </div>
-
-
-        <!-- Creator Information and Follower Count -->
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Creator Information</h5>
-            <p class="card-text">Details about the creator will be available soon.</p>
-            <p class="card-text">20100 People bookmarked this event</p>
-            <% if current_user %>
-              <%= button_to 'Follow', follow_creator_path(@event.user), method: :post, class: 'btn btn-primary follow-button', id: "button-follow" %>
-            <% end %>
-            <p class="card-text">2102 Followers</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Map Section -->
-      <div class="col-md-4">
+        <!-- Map Section -->
         <div class="map-container"
           data-controller="map"
           data-map-markers-value="<%= @markers.to_json %>"
-          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Section: Event Info and Creator Info -->
+    <div class="bottom-section">
+      <!-- Event Information -->
+      <div class="card info-card">
+        <div class="card-body">
+          <h3><%= @event.name %></h3>
+          <p class="card-text"><%= @event.description %></p>
+          <p>Category:</p>
+          <% if @event.date.present? %>
+            <p class="card-text">Date: <%= @event.date.strftime("%B %d, %Y") %></p>
+          <% else %>
+            <p class="card-text">Date: Not specified</p>
+          <% end %>
+          <% if current_user %>
+            <%= button_to 'Bookmark', bookmark_event_path(@event), method: :post, class: 'btn btn-primary bookmark-button', id: "button-bookmark" %>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- Creator Information and Follower Count -->
+      <div class="card creator-card">
+        <div class="card-body">
+          <h3>Creator Information</h3>
+          <p class="card-text">Details about the creator will be available soon.</p>
+          <p class="card-text">20100 People bookmarked this event</p>
+          <% if current_user %>
+            <%= button_to 'Follow', follow_creator_path(@event.user), method: :post, class: 'btn btn-primary follow-button', id: "follow_button" %>
+          <% end %>
+          <p class="card-text">2102 Followers</p>
+        </div>
       </div>
     </div>
   </div>
