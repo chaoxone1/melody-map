@@ -1,20 +1,26 @@
 <footer>
     <div class="footer-container">
         <div class="footer-left">
-            <h2>MelodyMAP</h2>
+            <h2><%= image_tag "Logo.svg", style: "width: 5rem; height: auto; margin-top:0.5rem;" %></h2>
             <p>© 2024 MelodyMap</p>
         </div>
         <div class="footer-center">
             <div class="footer-links">
                 <p class="footer-title">LINKS</p>
-                <ul>
-                    <li><%= link_to 'MY EVENTS',"#"%></li>
-                    <li><%= link_to 'MY PROFILE',"#"%></li>
-                    <li><%= link_to 'CONTACTS', "#" %></li>
-                    <li><%= link_to 'BOOKMARKS',"#" %></li>
-                    <li><%= link_to 'SETTINGS', "#" %></li>
-                    <li><%= link_to 'ABOUT US',"#" %></li>
-                </ul>
+                <div class="footer-columns">
+                    <ul>
+                        <li><%= link_to 'MY EVENTS', "#" %></li>
+                        <li><%= link_to 'MY PROFILE', "#" %></li>
+                    </ul>
+                    <ul>
+                        <li><%= link_to 'CONTACTS', "#" %></li>
+                        <li><%= link_to 'BOOKMARKS', "#" %></li>
+                    </ul>
+                    <ul>
+                        <li><%= link_to 'SETTINGS', "#" %></li>
+                        <li><%= link_to 'ABOUT US', "#" %></li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="footer-right">
