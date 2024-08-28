@@ -6,7 +6,6 @@ gem "geocoder"
 gem "pg_search"
 gem "cloudinary" # For picture management
 
-
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.4"
 
