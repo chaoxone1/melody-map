@@ -1,0 +1,18 @@
+<%# app/views/your_controller_name/my_space_index.html.erb %>
+
+<%= content_for :title, "My Space Index" %>
+
+<div class="my-space-container">
+  <header class="my-space-header">
+    <h1>Melody Map</h1>
+    <%= link_to 'Login', login_path, class: 'login-button' %>
+  </header>
+
+  <div class="my-space-content">
+    <div class="main-buttons">
+      <%= link_to 'Followers', followers_path, class: 'main-button followers' %>
+      <%= link_to 'My Bookmarks', bookmarks_path, class: 'main-button bookmarks' %>
+      <%= link_to 'My Events', events_path, class: 'main-button events' %>
+    </div>
+  </div>
+</div>
