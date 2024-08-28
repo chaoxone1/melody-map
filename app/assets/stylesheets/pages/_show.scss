@@ -8,19 +8,19 @@ body {
 
 .container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   padding: 20px;
 }
 
-.left-section {
-  width: 60%;
+.top-section {
+  display: flex;
+  justify-content: space-between;
 }
 
-.right-section {
-  width: 35%;
-  position: sticky;
-  top: 20px;
-  height: 100vh;
+.bottom-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .card {
@@ -31,8 +31,13 @@ body {
   padding: 20px;
 }
 
-.card-body {
-  text-align: center;
+.image-map-container {
+  display: flex;
+  width: 100%;
+}
+
+.image-card {
+  width: 60%;
 }
 
 .image-card .event-image {
@@ -41,48 +46,56 @@ body {
   border-radius: 8px;
 }
 
+.map-container {
+  width: 45%;
+  height: auto;
+  margin-left: 20px;
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  position: sticky;
+  top: 20px;
+}
+
+.info-card, .creator-card {
+  width: 100%;
+}
+
 .info-card .card-title {
   font-size: 1.5em;
   margin-bottom: 10px;
+
 }
 
 .card-text {
   margin-bottom: 10px;
-  color: black;
+  color: #333;
 }
 
-
-#button-bookmark {
+.bookmark-button, .follow-button {
   display: inline-block;
   padding: 10px 20px;
   font-size: 14px;
   font-weight: bold;
   text-align: center;
-  color: black;
-  background-color: #fca5e9;
+  color: #fff;
+  background-color: pink;
   border-radius: 4px;
   text-decoration: none;
-  border-color: #fca5e9;
 }
 
-
-#button-follow {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: bold;
+.card-body {
   text-align: center;
-  color: black;
-  background-color: #fca5e9;
-  border-radius: 4px;
-  text-decoration: none;
-  border-color: #fca5e9;
 }
 
+#button-bookmark, #follow_button {
+  background-color: pink;
+  border-color: pink;
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
 
-.map-container {
-  width: 100%;
-  height: 100%;
-  background-color: #e0e0e0;
-  border-radius: 8px;
+#button-bookmark:hover, #follow_button:hover {
+  background-color: black;
+  color: white;
 }
