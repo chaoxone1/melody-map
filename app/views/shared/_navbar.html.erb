@@ -1,54 +1,41 @@
-<div class="d-flex justify-content-between" id="background">
-  <a class="btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-    <i class="fa-solid fa-bars" style="padding-top=5px;"></i>
-  </a>
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-    <div class="offcanvas-header">
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon" style="height:7rem; border-bottom:0.01em solid gray; margin-right:3rem; margin-left:3rem;">
+  <div class="container-fluid">
+    <%= link_to "#", class: "navbar-brand" do %>
+      <%= image_tag "Logo.svg", style: "width: 5rem; height: auto; margin-top:0.5rem;" %>
+    <% end %>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="d-flex">
+      <%= link_to "MY EVENTS", events_path, style: "text-decoration: none; color: black; margin-right: 4rem; margin-top: 0.5rem;" %>
+      <%= link_to "BOOKMARKS", events_path, style: "text-decoration: none; color: black; margin-right: 4rem; margin-top: 0.5rem;" %>
+      <%= link_to "+MY EVENTS", events_path, style: "text-decoration: none; color: black; margin-right: 4rem; margin-top: 0.5rem;" %>
     </div>
-    <div class="offcanvas-body">
-      <div>
-        <%= link_to "Home", "#", style: "text-decoration: none; color:black; display:block; margin-bottom: 2rem;"  %>
-        <%= link_to "Create an event", "#", style: "text-decoration: none; color:black; display:block; margin-bottom: 2rem;"  %>
-        <%= link_to "Trendsetters", "#", style: "text-decoration: none; color:black; display:block; margin-bottom: 2rem;"  %>
-        <div class="dropdown" style="margin-bottom: 2rem;">
-          <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
-            My Space
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Followers</a></li>
-            <li><a class="dropdown-item" href="#">My Bookmarks</a></li>
-            <li><a class="dropdown-item" href="#">My created Events</a></li>
-          </ul>
-        </div>
-        <%= link_to "My Account", "#", style: "text-decoration: none; color:black; display:block;"  %>
-      </div>
-    </div>
-  </div>
-  <div class="name_app">
-  <h1>Melody Map</h1>
-  </div>
-  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon" style="background-color:black;">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto" >
-          <% if user_signed_in? %>
-            <li class="nav-item dropdown">
-              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
-              </div>
-            </li>
-          <% else %>
-            <li class="nav-item">
-              <%= link_to "Login", new_user_session_path, class: "nav-link", style: "color: white" %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-top:0.5rem">
+      <ul class="navbar-nav me-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "USER_NAME", "#", class: "nav-link", style:"color:black; font-style:blod; margin-top:0.5rem; margin-right:0.5rem;" %>
+          </li>
+          <li class="nav-item dropdown">
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, style: "width: 3.5rem; height: auto;" %>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Action", "#", class: "dropdown-item" %>
+              <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <% link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>
