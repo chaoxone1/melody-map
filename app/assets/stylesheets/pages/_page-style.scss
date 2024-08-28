@@ -1,0 +1,109 @@
+// Define color variables
+$black: #000000;
+$lighter-gray: #EDEDED;
+$secondary-color: #B1B1B1;
+$highlight-shade: #FFF7FD;
+$highlight-icons: #FFEEFB;
+$call-to-action: #1D1D1D;
+$white: #FFFFFF;
+
+// Global Styles
+body {
+  background-color: $white; // Webapp/Cards background
+  color: $black; // General text color
+  font-family: 'Arial, sans-serif';
+  margin: 0;
+  padding: 0;
+}
+
+// Headers
+h1, h2, h3, h4, h5, h6 {
+  color: $black;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.75em;
+}
+
+// Text
+p, li, span, a {
+  color: $black;
+  line-height: 1.6;
+}
+
+// Backgrounds and Cards
+.card, .section, .container {
+  background-color: $white;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+// Lighter Gray Elements
+.light-background, .secondary-content {
+  background-color: $lighter-gray;
+  color: $black;
+}
+
+// Secondary Color Usage
+.secondary-text, .secondary-border {
+  color: $secondary-color;
+  border-color: $secondary-color;
+}
+
+// Highlighted Areas
+.highlighted, .highlight-background {
+  background-color: $highlight-shade;
+  color: $black;
+}
+
+.highlight-icons {
+  background-color: $highlight-icons;
+  color: $black;
+  border-radius: 50%;
+  padding: 10px;
+  display: inline-block;
+}
+
+// Call to Action Buttons
+.cta-button {
+  background-color: $call-to-action;
+  color: $white;
+  padding: 10px 20px;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($call-to-action, 10%);
+  }
+}
+
+// Utility Classes
+.text-center {
+  text-align: center;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.p-20 {
+  padding: 20px;
+}
