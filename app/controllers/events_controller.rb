@@ -46,6 +46,13 @@ class EventsController < ApplicationController
     @events = current_user.events
   end
 
+  def bookmark
+    @event = Event.find(params[:id])
+    # Logic for bookmarking the event, e.g., adding it to the user's bookmarked events
+    current_user.bookmark(@event)
+    redirect_to @event, notice: 'Event bookmarked successfully.'
+  end
+
   private
   def set_events
     @event = Event.find(params[:id])
