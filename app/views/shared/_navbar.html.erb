@@ -12,15 +12,15 @@
     <div class="d-flex">
       <%= link_to "MY EVENTS", events_path, style: "text-decoration: none; color: black; margin-right: 4rem; margin-top: 0.5rem;" %>
       <%= link_to "BOOKMARKS", events_path, style: "text-decoration: none; color: black; margin-right: 4rem; margin-top: 0.5rem;" %>
-      <%= link_to "+MY EVENTS",  new_event_path, style: "text-decoration: none; color: black; margin-right: 4rem; margin-top: 0.5rem;" %>
+      <%= link_to "+ CREATE EVENT",  new_event_path, style: "text-decoration: none; color: black; margin-right: 4rem; margin-top: 0.5rem;" %>
     </div>
 
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-top:0.5rem">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "USER_NAME", "#", class: "nav-link", style:"color:black; font-style:blod; margin-top:0.5rem; margin-right:0.5rem;" %>
+          <li class="nav-item" >
+            <p class="nav-link" style="color:black; font-style:blod; margin-top:0.5rem; margin-right:0.5rem;" ><%= current_user.username %></p>
           </li>
           <li class="nav-item dropdown">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, style: "width: 3.5rem; height: auto;" %>
