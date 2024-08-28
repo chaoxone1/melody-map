@@ -5,16 +5,16 @@
       <%= form_with(model: @event) do |form| %>
 
         <div class="mb-3">
-          <%= form.label :title, "Event name", class: "form-label" %>
-          <%= form.text_field :title, class: "form-control", placeholder: "Enter event name", required: true %>
+          <%= form.label :name, "Event name", class: "form-label" %>
+          <%= form.text_field :name, class: "form-control", placeholder: "Enter event name", required: true %>
         </div>
 
 
 
         <div class="row">
           <div class="col-md-6 mb-3">
-            <%= form.label :start_time, "Date & Time", class: "form-label" %>
-            <%= form.datetime_local_field :start_time, class: "form-control", required: true %>
+            <%= form.label :date, "Date & Time", class: "form-label" %>
+            <%= form.datetime_local_field :date, class: "form-control", required: true %>
           </div>
 
         </div>
@@ -33,11 +33,12 @@
           <%= form.label :description, "Description", class: "form-label" %>
           <%= form.text_area :description, class: "form-control", rows: 4, placeholder: "Enter event description", required: true %>
         </div>
-
-        <div class="form-check mb-4">
-          <%= form.check_box :send_confirmation, { class: "form-check-input" } %>
-          <%= form.label :send_confirmation, "Send confirmation email to clients", class: "form-check-label" %>
+        <div class="mb-3">
+          <%= form.label :category, "Category", class: "form-label" %>
+          <%= form.text_area :category, class: "form-control", rows: 4, placeholder: "Enter a category", required: true %>
         </div>
+
+
 
         <div class="d-flex justify-content-between">
           <%= link_to 'Cancel', events_path, class: "btn btn-secondary" %>
