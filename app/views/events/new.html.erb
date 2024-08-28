@@ -6,24 +6,17 @@
       <%= form_with(model: @event, local: true) do |form| %>
 
         <div class="mb-3">
-          <%= form.label :title, "Event Title", class: "form-label" %>
+          <%= form.label :title, "Event name", class: "form-label" %>
           <%= form.text_field :title, class: "form-control", placeholder: "Enter event title", required: true %>
         </div>
 
-        <div class="mb-3">
-          <%= form.label :email, "Organizer Email", class: "form-label" %>
-          <%= form.email_field :email, class: "form-control", placeholder: "your.email@example.com", required: true %>
-        </div>
 
         <div class="row">
           <div class="col-md-6 mb-3">
             <%= form.label :start_time, "Start Date & Time", class: "form-label" %>
             <%= form.datetime_local_field :start_time, class: "form-control", required: true %>
           </div>
-          <div class="col-md-6 mb-3">
-            <%= form.label :end_time, "End Date & Time", class: "form-label" %>
-            <%= form.datetime_local_field :end_time, class: "form-control", required: true %>
-          </div>
+          
         </div>
 
         <div class="mb-3">

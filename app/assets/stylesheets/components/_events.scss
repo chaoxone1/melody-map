@@ -1,40 +1,83 @@
-// Variables
-$primary-color: #007bff;
-$secondary-color: #6c757d;
-$background-color: #f8f9fa;
-$card-border-radius: 8px;
+// Colors from the design
+$header-text-color: #000000;        // Headers and text
+$secondary-color: #B1B1B1;          // Secondary color
+$background-color: #FFFFFF;         // Webapp/Cards background
+$highlight-shade: #FFF7FD;          // Highlight Shade
+$highlight-icons: #FFEEFB;          // Highlight icons
+$call-to-action: #1D1D1D;           // Call to action (Pink)
+$light-gray: #EDEDED;               // Lighter gray color
 
-// Global Styles
+// Typography
+$title-hero-font-size: 64px;
+$title-page-font-size: 48px;
+$body-text-font-size: 16px;
+
+// Body and Background
 body {
-  background-color: $background-color;
+  background-color: $light-gray;
+  font-family: 'Arial', sans-serif;
+  color: $header-text-color;
 }
 
 // Card Styles
 .card {
-  border-radius: $card-border-radius;
+  background-color: $background-color;
+  border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .card-title {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: $title-page-font-size;
+  color: $header-text-color;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .form-label {
   font-weight: 500;
+  color: $header-text-color;
 }
 
 .form-control,
 .form-select {
-  border-radius: $card-border-radius;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid $secondary-color;
+  background-color: $highlight-shade;
+  color: $header-text-color;
 }
 
 .btn-primary {
-  background-color: $primary-color;
-  border-color: $primary-color;
+  background-color: $call-to-action;
+  border-color: $call-to-action;
+  color: $background-color;
+  &:hover {
+    background-color: lighten($call-to-action, 10%);
+  }
 }
 
 .btn-secondary {
   background-color: $secondary-color;
   border-color: $secondary-color;
+  color: $background-color;
+  &:hover {
+    background-color: darken($secondary-color, 10%);
+  }
+}
+
+.form-check-input {
+  background-color: $highlight-icons;
+  border-color: $secondary-color;
+}
+
+.form-check-label {
+  margin-left: 5px;
+  color: $header-text-color;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
