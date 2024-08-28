@@ -1,0 +1,40 @@
+// Variables
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$background-color: #f8f9fa;
+$card-border-radius: 8px;
+
+// Global Styles
+body {
+  background-color: $background-color;
+}
+
+// Card Styles
+.card {
+  border-radius: $card-border-radius;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.form-label {
+  font-weight: 500;
+}
+
+.form-control,
+.form-select {
+  border-radius: $card-border-radius;
+}
+
+.btn-primary {
+  background-color: $primary-color;
+  border-color: $primary-color;
+}
+
+.btn-secondary {
+  background-color: $secondary-color;
+  border-color: $secondary-color;
+}

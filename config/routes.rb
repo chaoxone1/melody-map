@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :users
   resources :bookmarks
   resources :followers
+  get "trendsetters", to: "pages#trendsetters_index"
 end
