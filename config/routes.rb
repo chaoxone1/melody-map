@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :events do
     member do
       post 'bookmark', to: 'events#bookmark'
+      post 'favorite', to: 'events#favorite'
+      delete 'unfavorite', to: 'events#unfavorite'
     end
   end
 

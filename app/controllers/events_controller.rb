@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
+  before_action :set_events, only: [ :favorite, :unfavorite ]
   def index
     if params[:query].present?
       @events = Event.search_by_name_and_category(params[:query])
@@ -15,6 +16,22 @@ class EventsController < ApplicationController
         info_window_html: render_to_string(partial: "info_window", locals: {event: event}),
         marker_html: render_to_string(partial: "marker")
       }
+    end
+  end
+
+  def favorite
+    current_user.favorite(@event)
+    respond_to do |format|
+      format.html { redirect_to @event, notice: 'Event was successfully added to your favorites.' }
+      format.json { render json: { success: true }, status: :ok }
+    end
+  end
+
+  def unfavorite
+    current_user.unfavorite(@event)
+    respond_to do |format|
+      format.html { redirect_to @event, notice: 'Event was successfully removed from your favorites.' }
+      format.json { render json: { success: true }, status: :ok }
     end
   end
 
@@ -56,6 +73,7 @@ class EventsController < ApplicationController
   end
 
   private
+
   def set_events
     @event = Event.find(params[:id])
   end
