@@ -1,4 +1,8 @@
-<p> name: <%= event.name %></p>
-
-<p> address: <%= event.location %></p>
-<p> date: <%= event.date %></p>
+<div class="mapbox-popup">
+  <img src="https://via.placeholder.com/150" alt="Event Image" class="popup-image">
+  <div class="popup-content">
+    <p class="popup-title">Name: <%= event.name %></p>
+    <p class="popup-address">Address: <%= event.location %></p>
+    <p class="popup-date">Date: <%= event.date %></p>
+  </div>
+</div>
