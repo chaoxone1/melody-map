@@ -1,8 +1,23 @@
-<h1>Top Trendsetters</h1>
-<ul>
+<h1 class="page-title">Top Trendsetters</h1>
+
+<div class="trendsetters-container">
   <% @top_users.each do |user| %>
-    <li>
-      <%= link_to user.username, user_path(user) %> - <%= user.followers.count %> followers
-    </li>
+    <div class="trendsetter-card">
+      <div class="avatar-container">
+        <div class="avatar">
+          <span class="avatar-initials"><%= user.username.first(2).upcase %></span>
+        </div>
+      </div>
+      <div class="follower-count">
+        <%= user.followers.count %> Followers
+      </div>
+      <div class="upcoming-events">
+        Upcoming Events: Placeholder Event
+      </div>
+      <div class="card-buttons">
+        <%= link_to "Follow", user_path(user), class: "follow-button" %>
+        <%= link_to "Details", user_path(user), class: "details-button" %>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
