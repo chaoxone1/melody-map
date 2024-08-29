@@ -3,17 +3,28 @@
     <div class="card-body">
       <h2 class="card-title text-center mb-4">Create New Event</h2>
 
+      <% if @event.errors.any? %>
+        <div class="alert alert-danger">
+          <h4><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h4>
+          <ul>
+            <% @event.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
       <%= form_with(model: @event, local: true) do |form| %>
 
         <div class="mb-3">
-          <%= form.label :title, "Event name", class: "form-label" %>
-          <%= form.text_field :title, class: "form-control", placeholder: "Enter event title", required: true %>
+          <%= form.label :name, "Event name", class: "form-label" %>
+          <%= form.text_field :name, class: "form-control", placeholder: "Enter event name", required: true %>
         </div>
 
         <div class="row">
           <div class="col-md-6 mb-3">
-            <%= form.label :start_time, "Date", class: "form-label" %>
-            <%= form.datetime_local_field :start_time, class: "form-control", required: true %>
+            <%= form.label :date, "Date", class: "form-label" %>
+            <%= form.datetime_local_field :date, class: "form-control", required: true %>
           </div>
         </div>
 
