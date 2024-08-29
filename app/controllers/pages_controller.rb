@@ -33,7 +33,11 @@ class PagesController < ApplicationController
 
   end
 
-  def myspace
+  def myspaces
+    @followers = current_user.followers
+    @following = current_user.following
+    @bookmarks = current_user.bookmarks
+    @events = current_user.events
 
   end
 

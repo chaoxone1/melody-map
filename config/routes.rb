@@ -12,4 +12,14 @@ Rails.application.routes.draw do
   resources :bookmarks
   resources :followers
   get "trendsetters", to: "pages#trendsetters_index"
+  # config/routes.rb
+  get 'myspaces', to: 'pages#myspaces'
+  get 'followers', to: 'followers#index'
+  get 'bookmarks', to: 'bookmarks#index'
+  get 'events', to: 'events#index'
+  get 'trendsetters', to: 'pages#trendsetters_index'
+  get 'myspace', to: 'pages#myspace'
+
+  resources :followers, only: [:create, :destroy]
+  resources :users, only: [:show]
 end
