@@ -11,14 +11,7 @@
 
     <div class="pick-for-you">
       <%= render 'pick-for-you' %>
-      </div>
-
-    <h1>Events</h1>
-    <% @events.each do |event| %>
-      <p><%= event.name  %></p>
-      <p style="background-color:green;"><%= event.category  %></p>
-      <p><%= event.location  %></p>
-    <% end %>
+    </div>
   </div>
   <div class="col-4" style="height: 100vh; position: sticky; top: 0;"
     data-controller="map"
