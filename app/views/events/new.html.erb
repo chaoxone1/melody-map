@@ -3,20 +3,29 @@
     <div class="card-body">
       <h2 class="card-title text-center mb-4">Create New Event</h2>
 
+      <% if @event.errors.any? %>
+        <div class="alert alert-danger">
+          <h4><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h4>
+          <ul>
+            <% @event.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
       <%= form_with(model: @event, local: true) do |form| %>
 
         <div class="mb-3">
-          <%= form.label :title, "Event name", class: "form-label" %>
-          <%= form.text_field :title, class: "form-control", placeholder: "Enter event title", required: true %>
+          <%= form.label :name, "Event name", class: "form-label" %>
+          <%= form.text_field :name, class: "form-control", placeholder: "Enter event name", required: true %>
         </div>
-
 
         <div class="row">
           <div class="col-md-6 mb-3">
-            <%= form.label :start_time, "Start Date & Time", class: "form-label" %>
-            <%= form.datetime_local_field :start_time, class: "form-control", required: true %>
+            <%= form.label :date, "Date", class: "form-label" %>
+            <%= form.datetime_local_field :date, class: "form-control", required: true %>
           </div>
-          
         </div>
 
         <div class="mb-3">
@@ -25,8 +34,8 @@
         </div>
 
         <div class="mb-3">
-          <%= form.label :duration, "Duration", class: "form-label" %>
-          <%= form.text_field :duration, class: "form-control", placeholder: "e.g., 2 hours", required: true %>
+          <%= form.label :category, "Category", class: "form-label" %>
+          <%= form.select :category, options_for_select([["Pop", "Pop"], ["Rock", "Rock"], ["Hip-Hop", "Hip-Hop"], ["Electronic", "Electronic"], ["Country", "Country"], ["Classic", "Classic"]]), { prompt: "Select a Category" }, class: "form-select", required: true %>
         </div>
 
         <div class="mb-3">
@@ -34,16 +43,12 @@
           <%= form.text_area :description, class: "form-control", rows: 4, placeholder: "Enter event description", required: true %>
         </div>
 
-        <div class="form-check mb-4">
-          <%= form.check_box :send_confirmation, { class: "form-check-input" } %>
-          <%= form.label :send_confirmation, "Send confirmation email", class: "form-check-label" %>
-        </div>
-
         <div class="d-flex justify-content-between">
           <%= link_to 'Cancel', events_path, class: "btn btn-secondary" %>
           <%= form.submit "Create Event", class: "btn btn-primary" %>
         </div>
       <% end %>
+
     </div>
   </div>
 </div>

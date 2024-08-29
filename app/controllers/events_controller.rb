@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :index, :show ]
-  before_action :set_events, only: [ :favorite, :unfavorite ]
+  skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
+
   def index
     if params[:query].present?
       @events = Event.search_by_name_and_category(params[:query])
@@ -13,10 +14,49 @@ class EventsController < ApplicationController
       {
         lat: event.latitude,
         lng: event.longitude,
-        info_window_html: render_to_string(partial: "info_window", locals: {event: event}),
+        info_window_html: render_to_string(partial: "info_window", locals: { event: event }),
         marker_html: render_to_string(partial: "marker")
       }
     end
+  end
+
+  def show
+    @event = Event.find(params[:id])
+    @markers = [{
+      lat: @event.latitude,
+      lng: @event.longitude
+    }]
+  end
+
+  def new
+    @event = Event.new
+  end
+
+  def create
+  @event = Event.new(event_params)
+  @event.user = current_user
+
+  if @event.save
+    redirect_to @event, notice: 'Event was successfully created.'
+  else
+    render :new, status: :unprocessable_entity
+  end
+end
+
+  def edit
+  end
+
+  def update
+    if @event.update(event_params)
+      redirect_to @event, notice: 'Event was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @event.destroy
+    redirect_to events_path, notice: 'Event was successfully deleted.'
   end
 
   def favorite
@@ -35,50 +75,24 @@ class EventsController < ApplicationController
     end
   end
 
-  def edit
-    @event = Event.find(params[:id])
-  end
-  def show
-    @event = Event.find(params[:id])
-
-    @markers = [{
-      lat: @event.latitude,
-      lng: @event.longitude
-    }]
-  end
-
-  def create
-    @event = Event.new
-    @event.save
-  end
-
-  def update
-
-  end
-
-  def destroy
-    @event = Event.find(params[:id])
-    @event.destroy
-  end
-
   def my_events
     @events = current_user.events
   end
 
   def bookmark
     @event = Event.find(params[:id])
-    # Logic for bookmarking the event, e.g., adding it to the user's bookmarked events
     current_user.bookmark(@event)
     redirect_to @event, notice: 'Event bookmarked successfully.'
   end
 
   private
 
-  def set_events
-    @event = Event.find(params[:id])
+  def event_params
+    params.require(:event).permit(:name, :date, :location, :description, :category)
+
   end
 
-  def events_params
-    params.require(:event).permit(:name, :description, :date, :photo)
+  def set_event
+    @event = Event.find(params[:id])
   end
 end
