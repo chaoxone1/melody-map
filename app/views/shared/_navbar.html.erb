@@ -11,7 +11,7 @@
 
     <div class="d-flex">
       <%= link_to "MY EVENTS", events_path, style: "text-decoration: none; color: black; margin-right: 4rem; margin-top: 0.5rem;" %>
-      <%= link_to "BOOKMARKS", events_path, style: "text-decoration: none; color: black; margin-right: 4rem; margin-top: 0.5rem;" %>
+      <%= link_to "BOOKMARKS", bookmarks_path, style: "text-decoration: none; color: black; margin-right: 4rem; margin-top: 0.5rem;" %>
       <%= link_to "+ CREATE EVENT",  new_event_path, style: "text-decoration: none; color: black; margin-right: 4rem; margin-top: 0.5rem;" %>
     </div>
 
@@ -26,9 +26,7 @@
             <% if current_user.photo.attached? %>
             <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% else %>
-            <div class="avatar my-auto"; style="background-color: #f4c0e8">
-            <span class="avatar-initials"; style="background-color: #f4c0e8"><%= current_user.username.first(2).upcase %></span>
-            </div>
+            <%= image_tag "unknown-user.jpeg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% end  %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
