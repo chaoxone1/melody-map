@@ -1,0 +1,29 @@
+<%= @trendsetter.username %>
+
+<div class="trendsetter-show-container">
+  <div class="header">
+    <h1 class="page-title">Trendsetter Show Page</h1>
+  </div>
+
+  <div class="profile-section">
+    <div class="avatar-container">
+      <div class="avatar">
+        <span class="avatar-initials">Picture</span>
+      </div>
+    </div>
+
+    <div class="follower-info">
+      <div class="follower-count">2000 followers</div>
+      <%= link_to "Follow / unfollow", class: "follow-button" %>
+    </div>
+  </div>
+
+  <div class="events-section">
+    <div class="events-card">
+      <h3>Upcoming events</h3>
+    </div>
+    <div class="events-card">
+      <h3>Past events</h3>
+    </div>
+  </div>
+</div>
