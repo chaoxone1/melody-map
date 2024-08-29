@@ -1,5 +1,3 @@
-<%= @trendsetter.username %>
-
 <div class="trendsetter-show-container">
   <div class="header">
     <h1 class="page-title">Trendsetter Show Page</h1>
@@ -7,14 +5,16 @@
 
   <div class="profile-section">
     <div class="avatar-container">
-      <div class="avatar">
+      <div class="trendsetter_avatar">
         <span class="avatar-initials">Picture</span>
       </div>
     </div>
 
     <div class="follower-info">
       <div class="follower-count">2000 followers</div>
-      <%= link_to "Follow / unfollow", class: "follow-button" %>
+      <div class="follow-button-container">
+        <%= link_to "Follow / Unfollow", class: "follow-button" %>
+      </div>
     </div>
   </div>
 
