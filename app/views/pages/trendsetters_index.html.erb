@@ -1,18 +1,25 @@
-<h1 class="page-title">Top Trendsetters</h1>
+<h1 class="page-title">Trendsetters</h1>
 
-<div class="trendsetters-container">
-  <% @top_users.each do |user| %>
+<div class="trendsetters-container" background-color="#FFFFFF">
+  <% @trendsetters.each do |user| %>
     <div class="trendsetter-card">
       <div class="avatar-container">
         <div class="avatar">
+          <% if user.photo.attached? %>
+          <%= cl_image_tag user.photo.key, class: "avatar" %>
+          <% else %>
           <span class="avatar-initials"><%= user.username.first(2).upcase %></span>
+          <% end %>
+        </div>
+        <div class="avatar-name">
+          <%= user.username %>
         </div>
       </div>
-      <div class="follower-count">
+      <div class="follower-count number">
         <%= user.followers.count %> Followers
       </div>
       <div class="upcoming-events">
-        Upcoming Events: Placeholder Event
+        Upcoming Events: <%= user.events.where("date > ?", Time.current).order(:date).first.name %>
       </div>
       <div class="card-buttons">
         <%= link_to "Follow", trendsetter_path(user), class: "follow-button" %>
