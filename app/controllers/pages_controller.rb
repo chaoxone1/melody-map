@@ -5,7 +5,9 @@ class PagesController < ApplicationController
   end
 
   def trendsetters_index
-    @trendsetters = User.all
+    @trendsetters = User.left_joins(:followers)
+    .group('users.id')
+    .order('COUNT(followers.id) DESC')
   end
 
   def trendsetters_show
