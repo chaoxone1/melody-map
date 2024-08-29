@@ -21,4 +21,8 @@ class PagesController < ApplicationController
     @bookmarks = current_user.bookmarks
     @events = current_user.events
   end
+
+  def abouts_us
+  end
+
 end

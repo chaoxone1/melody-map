@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   get "trendsetters", to: "pages#trendsetters_index"
   get "trendsetters/:id", to: "pages#trendsetters_show", as: :trendsetter
+  get "abouts", to: "pages#abouts_us"
   get 'myspaces', to: 'pages#myspaces'
   get 'myspace', to: 'pages#myspace'
 end
