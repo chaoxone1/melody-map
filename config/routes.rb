@@ -26,4 +26,5 @@ Rails.application.routes.draw do
   resources :bookmarks
   resources :followers
   get "trendsetters", to: "pages#trendsetters_index"
+  get "trendsetters/:id", to: "pages#trendsetters_show", as: :trendsetter
 end
