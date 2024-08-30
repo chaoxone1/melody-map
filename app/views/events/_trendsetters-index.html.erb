@@ -20,9 +20,23 @@
 <!--Avatar Picure -->
           <div class="trendsetter-index-picture"></div>
             <% if user.photo.attached? %>
-              <%= cl_image_tag user.photo.key, class: "avatar-large" %>
+              <%= cl_image_tag user.photo.key,
+              class: "avatar dropdown-toggle",
+              id: "navbarDropdown",
+              data: { bs_toggle: "dropdown" },
+              'aria-haspopup': true,
+              'aria-expanded': false,
+              width: "40",
+              height: "40" %>
             <% else %>
-              <%= image_tag 'unknown-user', class: "avatar-large" %>
+              <%= image_tag 'unknown-user',
+              class: "avatar dropdown-toggle",
+              id: "navbarDropdown",
+              data: { bs_toggle: "dropdown" },
+              'aria-haspopup': true,
+              'aria-expanded': false,
+              width: "40",
+              height: "40" %>
             <% end  %>
           <div class="trendsetter-index-name smalltitle">
             <%= user.username %>
