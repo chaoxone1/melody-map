@@ -40,7 +40,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @markers = [{
       lat: @event.latitude,
-      lng: @event.longitude
+      lng: @event.longitude,
+      info_window_html: render_to_string(partial: "info_window", locals: { event: @event }),
     }]
   end
 

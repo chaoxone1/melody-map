@@ -71,31 +71,40 @@ body {
   color: #333;
 }
 
-.bookmark-button, .follow-button {
+.follow_button {
   display: inline-block;
   padding: 10px 20px;
   font-size: 14px;
   font-weight: bold;
   text-align: center;
-  color: #fff;
+  color: black;
   background-color: pink;
+  border-color: pink;
   border-radius: 4px;
   text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+  outline: none;
+}
+
+.unbookmark_button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+  outline: none;
 }
 
 .card-body {
   text-align: center;
 }
 
-#button-bookmark, #follow_button {
-  background-color: pink;
-  border-color: pink;
-  color: black;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-#button-bookmark:hover, #follow_button:hover {
+.follow_button:hover {
   background-color: black;
-  color: white;
+  border-color: black;
+  outline: none;
 }
