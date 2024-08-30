@@ -3,30 +3,38 @@
     <div class="col-md-8">
     <h2 style="color: pink; border: 2px solid pink; border-radius: 10px; text-align: center;">Upcoming Events</h2>
       <div class="row">
-        <% @upcoming_events.each do |favorite| %>
-          <div class="col-6 mb-4">
-            <div>
-              <div class="d-block">
-                <%#= image_tag favorite.favoritable.image_url, alt: favorite.favoritable.name, class: "card-img-top" %>
-                <%= image_tag "Logo.svg", alt: favorite.favoritable.name, style: "width:80%" %>
-              </div>
+        <% if @upcoming_events.count > 0 %>
+          <% @upcoming_events.each do |favorite| %>
+            <div class="col-6 mb-4">
               <div>
-                <p style="margin-left: 0.5rem; margin-bottom: 0; display: inline-block; padding: 0.2rem; color: pink; border: 2px solid pink; border-radius: 20px;"><%= favorite.favoritable.category %></p>
-                <a href="<%= event_path(favorite.favoritable) %>" style="text-decoration: none; display: block; color: black; font-size: 1.5rem; font-weight:bold;"><%= favorite.favoritable.name %></a>
-                <p style="margin: 0; color: #666;">Location:<%= favorite.favoritable.location %></p>
-                <p style="margin: 0; color: #666;">Date:<%= favorite.favoritable.date %></p>
-                <p style="color: #666;">
-                 <i class="fa-regular fa-bookmark" style="font-size: 1rem; color: #666;"></i>
-                <strong><%= favorite.favoritable.favorited.count %></strong>
-                <%= favorite.favoritable.favorited.count == 1 ? 'Bookmark' : 'Bookmarks' %>
-                </p>
+                <div class="d-block">
+                  <%#= image_tag favorite.favoritable.image_url, alt: favorite.favoritable.name, class: "card-img-top" %>
+                  <%= image_tag "Logo.svg", alt: favorite.favoritable.name, style: "width:80%" %>
+                </div>
+                <div>
+                  <p style="margin-left: 0.5rem; margin-bottom: 0; display: inline-block; padding: 0.2rem; color: pink; border: 2px solid pink; border-radius: 20px;"><%= favorite.favoritable.category %></p>
+                  <a href="<%= event_path(favorite.favoritable) %>" style="text-decoration: none; display: block; color: black; font-size: 1.5rem; font-weight:bold;"><%= favorite.favoritable.name %></a>
+                  <p style="margin: 0; color: #666;"><%= favorite.favoritable.location %></p>
+                  <p style="margin: 0; color: #666;"><%= favorite.favoritable.date %></p>
+                  <p style="color: #666;">
+                  <i class="fa-regular fa-bookmark" style="font-size: 1rem; color: #666;"></i>
+                  <strong><%= favorite.favoritable.favorited.count %></strong>
+                  <%= favorite.favoritable.favorited.count == 1 ? 'Bookmark' : 'Bookmarks' %>
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
+        <% else %>
+         <p style="color: #666; text-align: center;">
+          Hey you didn´t bookmark anything! What are your plans?
+          <i class="fa-solid fa-face-laugh" style="color: pink;"></i>
+         </p>
         <% end %>
       </div>
       <h2 style="color: pink; border: 2px solid pink; border-radius: 10px; text-align: center;">Past Events</h2>
       <div class="row">
+      <% if @past_events.count > 0 %>
         <% @past_events.each do |favorite| %>
           <div class="col-6 mb-4">
             <div>
@@ -48,10 +56,14 @@
             </div>
           </div>
         <% end %>
+      <% else %>
+       <p style="color: #666; text-align: center;">
+         Looks like you didn´t bookmarked any event in the past!
+        <i class="fa-solid fa-clock" style="color: pink;"></i>
+       </p>
+      <% end %>
       </div>
-
     </div>
-
     <div class="col-md-4" style="height: 100vh; position: sticky; top: 0;"
            data-controller="map"
            data-map-markers-value="<%= @markers.to_json %>"
