@@ -25,4 +25,8 @@ class PagesController < ApplicationController
   def abouts_us
   end
 
+  def created_events
+    @events = current_user.events
+  end
+
 end

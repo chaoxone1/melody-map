@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>My Created Events</h1>
+  <div class="search-bar">
+    <input type="text" placeholder="Search events..." class="search-input">
+  </div>
+
+  <div class="events-navigation">
+    <button class="event-nav-button">Upcoming events</button>
+    <button class="event-nav-button">Past events</button>
+  </div>
+  <div class="events-grid">
+    <% @events.each do |event| %>
+      <div class="event-card">
+        <h3><%= event.name %></h3>
+        <% if event.photo.attached? %>
+          <%= image_tag event.image, class: "event-image" %>
+        <% else %>
+          <img src="https://via.placeholder.com/150" alt="Placeholder Image" class="event-image">
+        <% end %>
+        <p><%= event.description %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

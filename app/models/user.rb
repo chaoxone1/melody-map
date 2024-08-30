@@ -13,7 +13,6 @@ class User < ApplicationRecord
   has_many :events
   acts_as_favoritor
   has_many :bookmarks
-  has_many :events, through: :bookmarks
 
   has_many :following_relationships, foreign_key: :user_id, class_name: 'Follower'
   has_many :following, through: :following_relationships, source: :following
