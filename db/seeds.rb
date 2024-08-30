@@ -17,7 +17,9 @@ users << User.create!(
   radius: 20,
   latitude: 52.5200,
   longitude: 13.4050
-)
+).tap do |user|
+  user.photo.attach(io: URI.open("https://res.cloudinary.com/doxvqzbhi/image/upload/v1724947177/production/5eevp6xn6po4d5xcz8xeke70n6yd.jpg"), filename: '5eevp6xn6po4d5xcz8xeke70n6yd.jpg')
+end
 
 users << User.create!(
   email: 'danmuller.dev.98@gmail.com',
@@ -29,7 +31,9 @@ users << User.create!(
   radius: 30,
   latitude: 52.5096,
   longitude: 13.3760
-)
+).tap do |user|
+  user.photo.attach(io: URI.open("https://res.cloudinary.com/doxvqzbhi/image/upload/v1724939380/T02NE0241-U07A7GBG294-562304f06391-512_ryqfp1.jpg"), filename: 'T02NE0241-U07A7GBG294-562304f06391-512_ryqfp1.jpg')
+end
 
 users << User.create!(
   email: 'distadiomichele93@gmail.com',
@@ -41,7 +45,9 @@ users << User.create!(
   radius: 25,
   latitude: 51.2277,
   longitude: 6.7735
-)
+).tap do |user|
+  user.photo.attach(io: URI.open("https://res.cloudinary.com/doxvqzbhi/image/upload/v1724939425/T02NE0241-U07AR5CHVDM-11ec95f7248d-512_pydonv.jpg"), filename: 'T02NE0241-U07AR5CHVDM-11ec95f7248d-512_pydonv.jpg')
+end
 
 users << User.create!(
   email: 'keno.mehic10@gmail.com',
@@ -53,7 +59,9 @@ users << User.create!(
   radius: 35,
   latitude: 48.1371,
   longitude: 11.5754
-)
+).tap do |user|
+  user.photo.attach(io: URI.open("https://res.cloudinary.com/doxvqzbhi/image/upload/sheet-music_ylbzmb.jpg"), filename: 'sheet-music_ylbzmb.jpg')
+end
 
 users << User.create!(
   email: 'armankurtovic01@gmail.com',
@@ -65,7 +73,9 @@ users << User.create!(
   radius: 15,
   latitude: 51.2277,
   longitude: 6.7735
-)
+).tap do |user|
+  user.photo.attach(io: URI.open("https://res.cloudinary.com/doxvqzbhi/image/upload/v1724939409/T02NE0241-U07BE9BB468-15a872818b96-512_dgaee8.jpg"), filename: 'T02NE0241-U07BE9BB468-15a872818b96-512_dgaee8.jpg')
+end
 
 # Create additional users
 users << User.create!(
