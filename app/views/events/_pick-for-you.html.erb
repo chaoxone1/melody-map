@@ -3,12 +3,12 @@
     <%= form_with url: events_path, method: :get do %>
     <%= hidden_field_tag :view, params[:view] %>
     <%= submit_tag "Rock", name: "category", value: "Rock", style:"border-radius: 20px; background-color:lightpink; padding: 0.2rem; border: 0.2rem solid pink;" %>
-    <%= submit_tag "Festivals", name: "category", value: "Festivals", style:"margin-left: 2rem;border-radius: 20px; background-color:lightpink; padding: 0.2rem; border: 0.2rem solid pink;" %>
-    <%= submit_tag "Techno", name: "category", value: "Techno", style:"margin-left: 2rem;border-radius: 20px; background-color:lightpink; padding: 0.2rem; border: 0.2rem solid pink;" %>
-    <%= submit_tag "Hip-hop'", name: "category", value: "Hip-Hop", style:"margin-left: 2rem;border-radius: 20px; background-color:lightpink; padding: 0.2rem; border: 0.2rem solid pink;" %>
-    <%= submit_tag "Jazz", name: "category", value: "Jazz", style:"margin-left: 2rem;border-radius: 20px; background-color:lightpink; padding: 0.2rem; border: 0.2rem solid pink;" %>
+    <%= submit_tag "Electronic", name: "category", value: "Electronic", style:"margin-left: 2rem;border-radius: 20px; background-color:lightpink; padding: 0.2rem; border: 0.2rem solid pink;" %>
+    <%= submit_tag "Hip-hop", name: "category", value: "Hip-Hop", style:"margin-left: 2rem;border-radius: 20px; background-color:lightpink; padding: 0.2rem; border: 0.2rem solid pink;" %>
+    <%= submit_tag "Pop", name: "category", value: "Pop", style:"margin-left: 2rem;border-radius: 20px; background-color:lightpink; padding: 0.2rem; border: 0.2rem solid pink;" %>
     <%= submit_tag "Classic", name: "category", value: "Classic", style:"margin-left: 2rem;border-radius: 20px; background-color:lightpink; padding: 0.2rem; border: 0.2rem solid pink;" %>
     <%= submit_tag "Country", name: "category", value: "Country", style:"margin-left: 2rem;border-radius: 20px; background-color:lightpink; padding: 0.2rem; border: 0.2rem solid pink;" %>
+    <%#= submit_tag current_user.categories, name: "category", value: current_user.categories , style:"margin-left: 2rem;border-radius: 20px; background-color:lightpink; padding: 0.2rem; border: 0.2rem solid pink;" %>
   <% end %>
   </div>
   <div style="margin: 3rem; border-top: 0.1rem solid #666; padding: 2rem; border-bottom: 0.1rem solid #666; width: 90%;">
