@@ -17,7 +17,56 @@
   font-weight: 20px;
   margin-right: 120px;
 }
-
+// Search button
 .banner-btn-success {
+  background-color: #f4c0e8;
+  color: black;
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  text-align: center;
+  line-height: 56px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  padding-left: 10px;
+}
+.banner-button-area {
+  padding-left: 10px;
+}
+
+.banner-btn-success:hover {
   background-color: black;
+  color: white;
+}
+
+// Search Field
+.banner-search-form {
+  display: flex;
+  align-items: center;
+  width: 800px;
+  justify-content: center;
+}
+.rounded-pill {
+  margin: 0px;
+  top: 50%;
+  background-color: #EDEDED;
+}
+
+// Search Area
+.banner-search-area {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+  margin-right: 120px;
+}
+
+//Circle Logo in Banner
+.circle-logo-area {
+  padding-top: 60px;
+}
+
+.circle-logo-area:hover {
+  background-color: #f4c0e8;
 }
