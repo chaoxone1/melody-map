@@ -1,0 +1,34 @@
+<div class="content">
+  <!-- Logo Area -->
+  <div class="trendsetter-logo-area">
+    <div class="trendsetter-logo"><%= image_tag 'trendsetter-circle' %>
+    </div>
+  </div>
+  <!-- Headline Area -->
+  <div class="trendsetter-headline">
+    <div class="trendsetter-title">
+      <h2><i class="fa-solid fa-user" style="margin-top: 4rem;margin-bottom: 4rem;font-size: 1.5rem;color:black;"></i>Top Trendsetters</h2>
+    </div>
+    <div class="trendsetter-viewall">
+        <h2>View all</h2>
+    </div>
+  </div>
+<!-- Cards Area -->
+  <div class="trendsetter-card-area">
+      <% @top3_trendsetters.each do |user| %>
+        <div class="trendsetter-index-card">
+<!--Avatar Picure -->
+          <div class="trendsetter-index-picture"></div>
+            <% if user.photo.attached? %>
+              <%= cl_image_tag user.photo.key, class: "avatar-large" %>
+            <% else %>
+              <%= image_tag 'unknown-user', class: "avatar-large" %>
+            <% end  %>
+          <div class="trendsetter-index-name smalltitle">
+            <%= user.username %>
+          </div>
+          </div>
+      <% end  %>
+  </div>
+  <!-- End of content -->
+</div>
