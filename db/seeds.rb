@@ -100,7 +100,8 @@ users << User.create!(
   radius: 10,
   latitude: 50.1109,
   longitude: 8.6821
-)
+).tap do |user|
+  user.photo.attach(io: URI.open("https://res.cloudinary.com/doxvqzbhi/image/upload/v1725027600/spaarow_jfjq5i.jpg"), filename: 'spaarow_jfjq5i.jpg')
 
 users << User.create!(
   email: 'sarah.maier@gmail.com',
@@ -122,18 +123,6 @@ users << User.create!(
   address: 'Weinstrasse 10, 80331 Munich, Germany',
   categories: 'Rock',
   radius: 45,
-  latitude: 48.1371,
-  longitude: 11.5754
-)
-
-users << User.create!(
-  email: 'anna.wagner@gmail.com',
-  username: 'anna_w',
-  password: 'password',
-  password_confirmation: 'password',
-  address: 'Marienplatz 1, 80331 Munich, Germany',
-  categories: 'Electronic',
-  radius: 20,
   latitude: 48.1371,
   longitude: 11.5754
 )
