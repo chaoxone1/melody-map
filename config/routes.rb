@@ -28,4 +28,5 @@ Rails.application.routes.draw do
   get "abouts", to: "pages#abouts_us"
   get 'myspaces', to: 'pages#myspaces'
   get 'myspace', to: 'pages#myspace'
+  get 'my_created_events', to: 'pages#created_events'
 end

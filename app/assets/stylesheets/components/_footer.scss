@@ -73,7 +73,7 @@ footer {
 
 .premium-button {
   display: inline-block;
-  background-color: #f89baa;
+  background-color: pink;
   color: #1D1D1D;
   padding: 10px 20px;
   border-radius: 30px;
@@ -83,5 +83,8 @@ footer {
 }
 
 .premium-button:hover {
-  background-color: #c38787;
+  background-color: black;
+  color: white;
+  transition: background-color 0.3s, color 0.3s;
+  padding: 10px 20px;
 }
