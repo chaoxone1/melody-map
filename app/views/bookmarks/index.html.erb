@@ -8,8 +8,7 @@
             <div class="col-6 mb-4">
               <div>
                 <div class="d-block">
-                  <%#= image_tag favorite.favoritable.image_url, alt: favorite.favoritable.name, class: "card-img-top" %>
-                  <%= image_tag "Logo.svg", alt: favorite.favoritable.name, style: "width:80%" %>
+                  <%= cl_image_tag favorite.favoritable.photo.key, alt: favorite.favoritable.name, style: "width:80%" %>
                 </div>
                 <div>
                   <p style="margin-left: 0.5rem; margin-bottom: 0; display: inline-block; padding: 0.2rem; color: pink; border: 2px solid pink; border-radius: 20px;"><%= favorite.favoritable.category %></p>
@@ -39,8 +38,7 @@
           <div class="col-6 mb-4">
             <div>
               <div class="d-block">
-                <%#= image_tag favorite.favoritable.image_url, alt: favorite.favoritable.name, class: "card-img-top" %>
-                <%= image_tag "Logo.svg", alt: favorite.favoritable.name, style: "width:80%" %>
+                <%= cl_image_tag favorite.favoritable.photo.key, alt: favorite.favoritable.name, style: "width:80%" %>
               </div>
               <div>
                 <p style="margin-left: 0.5rem; margin-bottom: 0; display: inline-block; padding: 0.2rem; color: pink; border: 2px solid pink; border-radius: 20px;"><%= favorite.favoritable.category %></p>
