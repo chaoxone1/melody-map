@@ -11,7 +11,7 @@
   <div class="events-grid">
     <% @events.each do |event| %>
       <div class="event-card">
-        <h3><%= event.name %></h3>
+        <h3><%= link_to event.name, event_path(event.id), style:"text-decoration: none; color: black" %></h3>
         <% if event.photo.attached? %>
           <%= cl_image_tag event.photo.key, class: "event-image" %>
         <% else %>

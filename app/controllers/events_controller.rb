@@ -7,14 +7,19 @@ class EventsController < ApplicationController
     if params[:query].present?
       @events = Event.search_by_name_and_category(params[:query])
     elsif params[:category].present?
-      @events = Event.where(category: params[:category])
+      if params[:category] == 'For You'
+        preferred_categories = current_user.categories
+        @events = @events.where(category: preferred_categories)
+      else
+        @events = @events.where(category: params[:category])
+      end
     end
 
     case params[:view]
     when 'all'
 
     when 'today'
-      @events = @events.where(date: Date.today)
+      @events = @events.where(date: Date.today.beginning_of_day..Date.today.end_of_day)
     when 'week'
       @events = @events.where(date: Date.today.beginning_of_week..Date.today.end_of_week)
     when 'for_you'
@@ -51,15 +56,15 @@ class EventsController < ApplicationController
   end
 
   def create
-  @event = Event.new(event_params)
-  @event.user = current_user
+    @event = Event.new(event_params)
+    @event.user = current_user
 
-  if @event.save
-    redirect_to @event, notice: 'Event was successfully created.'
-  else
-    render :new, status: :unprocessable_entity
+    if @event.save
+      redirect_to @event, notice: 'Event was successfully created.'
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
-end
 
   def edit
   end

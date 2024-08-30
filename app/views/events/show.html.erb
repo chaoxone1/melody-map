@@ -30,13 +30,19 @@
           <% else %>
             <p class="card-text">Date: Not specified</p>
           <% end %>
-          <% if current_user %>
-            <% if current_user.favorited?(@event) %>
-                <%= button_to 'Unbookmark it', unfavorite_event_path(@event), method: :delete, class: 'btn btn-danger unbookmark_button' %>
-              <% else %>
-                <%= button_to 'Bookmark', favorite_event_path(@event), method: :post, class: 'btn btn-primary follow_button' %>
-              <% end %>
-          <% end %>
+          <div class="d-flex justify-content-around">
+            <% if current_user %>
+              <% if current_user.favorited?(@event) %>
+                  <%= button_to 'Unbookmark it', unfavorite_event_path(@event), method: :delete, class: 'btn btn-danger unbookmark_button' %>
+                <% else %>
+                  <%= button_to 'Bookmark', favorite_event_path(@event), method: :post, class: 'btn btn-primary follow_button' %>
+                <% end %>
+            <% end %>
+            <% if @event.user == current_user  %>
+              <%= link_to "Edit Event", edit_event_path, class:"btn btn-outline-info", style:"border-radius 4px; padding:0.6rem"%>
+            <% end %>
+          </div>
+
         </div>
       </div>
 
