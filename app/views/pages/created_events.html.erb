@@ -13,7 +13,7 @@
       <div class="event-card">
         <h3><%= event.name %></h3>
         <% if event.photo.attached? %>
-          <%= image_tag event.image, class: "event-image" %>
+          <%= cl_image_tag event.photo.key, class: "event-image" %>
         <% else %>
           <img src="https://via.placeholder.com/150" alt="Placeholder Image" class="event-image">
         <% end %>
