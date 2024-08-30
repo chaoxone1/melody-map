@@ -9,6 +9,8 @@ class EventsController < ApplicationController
       @events = Event.all
     end
 
+    @events = @events.limit(6) unless params[:view] == 'all'
+
     # Map loading for showing locations of Events
     @markers = @events.geocoded.map do |event|
       {
