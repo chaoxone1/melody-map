@@ -5,11 +5,25 @@ class EventsController < ApplicationController
   def index
     if params[:query].present?
       @events = Event.search_by_name_and_category(params[:query])
+    elsif params[:category].present?
+      @events = Event.where(category: params[:category])
     else
-      @events = Event.all
+      @events = Event.limit(6)
     end
 
-    @events = @events.limit(6) unless params[:view] == 'all'
+    case params[:view]
+    when 'all'
+      @events = Event.all
+    when 'today'
+      @events = @events.where(date: Date.today)
+    when 'week'
+      @events = @events.where(date: Date.today.beginning_of_week..Date.today.end_of_week)
+    when 'for_you'
+      preferred_categories = current_user.categories
+      @events = @events.where(category: preferred_categories)
+    else
+      @events = @events.limit(6)
+    end
 
     # Map loading for showing locations of Events
     @markers = @events.geocoded.map do |event|
