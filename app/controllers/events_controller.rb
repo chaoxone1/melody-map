@@ -33,6 +33,8 @@ class EventsController < ApplicationController
         marker_html: render_to_string(partial: "marker")
       }
     end
+
+    @top3_trendsetters = top3_trendsetters
   end
 
   def show
@@ -99,6 +101,13 @@ end
     @event = Event.find(params[:id])
     current_user.bookmark(@event)
     redirect_to @event, notice: 'Event bookmarked successfully.'
+  end
+
+  def top3_trendsetters
+    @trendsetters = User.left_joins(:followers)
+    .group('users.id')
+    .order('COUNT(followers.id) DESC')
+    .limit(3)
   end
 
   private

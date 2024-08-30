@@ -1,0 +1,45 @@
+.trendsetter-logo-area {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding-top: 40px;
+}
+
+.trendsetter-headline {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.trendsetter-viewall h2 {
+  font-size: 1.5rem;
+  text-decoration: none;
+  background-color: white;
+  border-radius: 20px;
+  border: 2px solid black;
+  font-size: 1.5rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  padding: 0.2rem;
+}
+
+.trendsetter-card-area {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-evenly;
+  width: fit-content;
+  block-size: fit-content;
+}
+
+.smalltitle
+{
+color:#000000;
+text-align:center;
+vertical-align:text-top;
+font-size:14px;
+font-family:Kanit;
+line-height:auto;
+border-style:hidden;
+outline:none;
+width:484px;
+}
