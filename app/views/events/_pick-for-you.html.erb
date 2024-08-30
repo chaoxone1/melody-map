@@ -37,8 +37,7 @@
     <div class="col-4 mb-4">
       <div>
         <div class="d-block mb-4">
-          <%#= image_tag event.image_url, alt: event.name, class: "card-img-top" %>
-          <%= image_tag "Logo.svg", alt: event.name, style: "width:80%" %>
+          <%= cl_image_tag event.photo.key, alt: event.name, style: "width:80%" %>
         </div>
         <div>
           <p style="margin-left: 0.5rem; margin-bottom: 0; display: inline-block; padding: 0.2rem; color: pink; border: 2px solid pink; border-radius: 20px;"><%= event.category %></p>
