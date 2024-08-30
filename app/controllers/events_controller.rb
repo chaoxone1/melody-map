@@ -12,7 +12,7 @@ class EventsController < ApplicationController
 
     case params[:view]
     when 'all'
-      
+
     when 'today'
       @events = @events.where(date: Date.today)
     when 'week'
@@ -113,7 +113,7 @@ end
   private
 
   def event_params
-    params.require(:event).permit(:name, :date, :location, :description, :category)
+    params.require(:event).permit(:name, :date, :location, :description, :category, :photo)
 
   end
 
