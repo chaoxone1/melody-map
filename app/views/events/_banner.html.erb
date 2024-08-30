@@ -9,15 +9,17 @@
   <div class="banner-subtext">This is the place, where you will find your next event. The Music you love.The event you ever wanted to go. The place to follow the right people. <p> Welcome to Melody Map. Follow your rhythm.</p></div>
 
 
-  <div class="col">
+  <div class="col banner-search-area">
     <%= form_with url: events_path, method: :get, local: true do %>
-      <div class="form-group">
+      <div class="form-group banner-search-form">
         <%= label_tag :query, "" %>
-        <%= text_field_tag :query, params[:query], class: "form-control" %>
+        <%= text_field_tag :query, params[:query], class: "form-control rounded-pill", placeholder: "search here" %>
+        <div class="col-auto banner-button-area">
+          <button class="banner-btn-success" type="submit">&gt;</button>
+        </div>
       </div>
-        <% end %>
+    <% end %>
   </div>
-  <div class="col-auto">
-    <button class="btn btn-lg banner-btn-success" type="submit" style="margin-right: 10px; margin-top: 15px;">Search</button>
-  </div>
+  <div class="circle-logo-area"> <%= image_tag "banner-circles.svg" %></div>
+    <%# End of content %>
 </div>
