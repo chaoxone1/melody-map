@@ -1,7 +1,12 @@
 <div class="row">
   <div class="d-flex">
-    <h2><i class="fa-solid fa-music" style="margin-top: 4rem;margin-bottom: 4rem;font-size: 1.5rem;color:black;"></i>Our Picks For You!</h2>
-    <button style="background-color: white;padding: 0.2rem; color: black; border: 2px solid black; border-radius: 20px;">VIEW ALL</button>
+    <% if params[:view] != "all" %>
+        <h2><i class="fa-solid fa-music" style="margin-top: 4rem;margin-bottom: 4rem;font-size: 1.5rem;color:black;"></i>Our Picks For You!</h2>
+        <%= link_to 'VIEW ALL', events_path(view: 'all'), style:"text-decoration: none; background-color: white;padding: 0.2rem; color: black; border: 2px solid black; border-radius: 20px;" %>
+      <% else %>
+        <h2><i class="fa-solid fa-music" style="margin-top: 4rem;margin-bottom: 4rem;font-size: 1.5rem;color:black;"></i>All Events</h2>
+        <%= link_to 'Return to your Pick for you', events_path, style:"text-decoration: none; background-color: white;padding: 0.2rem; color: black; border: 2px solid black; border-radius: 20px;" %>
+    <% end %>
   </div>
 
   <% @events.each do |event| %>
