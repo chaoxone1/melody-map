@@ -4,7 +4,7 @@
       <div class="image-map-container">
         <!-- Event Picture -->
         <div class="card image-card">
-          <img src="https://entoria-metal.de/wp-content/themes/yootheme/cache/21/albtraumnacht-vol6-muenchen-21b4703b.jpeg" class="event-image" alt="<%= @event.name %>">
+          <%= cl_image_tag @event.photo.key, class:"event-image" %>
         </div>
 
 
