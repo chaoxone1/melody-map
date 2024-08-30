@@ -3,17 +3,16 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
 
   def index
+    @events = Event.all
     if params[:query].present?
       @events = Event.search_by_name_and_category(params[:query])
     elsif params[:category].present?
       @events = Event.where(category: params[:category])
-    else
-      @events = Event.limit(6)
     end
 
     case params[:view]
     when 'all'
-      @events = Event.all
+      
     when 'today'
       @events = @events.where(date: Date.today)
     when 'week'

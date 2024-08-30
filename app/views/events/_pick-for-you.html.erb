@@ -1,34 +1,35 @@
 <div class="row">
-  <div>
+  <div class="d-flex justify-content-around mt-5">
     <%= form_with url: events_path, method: :get do %>
-    <%= submit_tag "Rock", name: "category", value: "Rock" %>
-    <%= submit_tag "Festivals", name: "category", value: "Festivals" %>
-    <%= submit_tag "Techno", name: "category", value: "Techno" %>
-    <%= submit_tag "Hip-hop'", name: "category", value: "Hip-Hop" %>
-    <%= submit_tag "Jazz", name: "category", value: "Jazz" %>
-    <%= submit_tag "Classic", name: "category", value: "Classic" %>
-    <%= submit_tag "Country", name: "category", value: "Country" %>
+    <%= hidden_field_tag :view, params[:view] %>
+    <%= submit_tag "Rock", name: "category", value: "Rock", style:"border-radius: 20px; background-color:lightpink; padding: 0.2rem; border: 0.2rem solid pink;" %>
+    <%= submit_tag "Festivals", name: "category", value: "Festivals", style:"margin-left: 2rem;border-radius: 20px; background-color:lightpink; padding: 0.2rem; border: 0.2rem solid pink;" %>
+    <%= submit_tag "Techno", name: "category", value: "Techno", style:"margin-left: 2rem;border-radius: 20px; background-color:lightpink; padding: 0.2rem; border: 0.2rem solid pink;" %>
+    <%= submit_tag "Hip-hop'", name: "category", value: "Hip-Hop", style:"margin-left: 2rem;border-radius: 20px; background-color:lightpink; padding: 0.2rem; border: 0.2rem solid pink;" %>
+    <%= submit_tag "Jazz", name: "category", value: "Jazz", style:"margin-left: 2rem;border-radius: 20px; background-color:lightpink; padding: 0.2rem; border: 0.2rem solid pink;" %>
+    <%= submit_tag "Classic", name: "category", value: "Classic", style:"margin-left: 2rem;border-radius: 20px; background-color:lightpink; padding: 0.2rem; border: 0.2rem solid pink;" %>
+    <%= submit_tag "Country", name: "category", value: "Country", style:"margin-left: 2rem;border-radius: 20px; background-color:lightpink; padding: 0.2rem; border: 0.2rem solid pink;" %>
   <% end %>
   </div>
   <div style="margin: 3rem; border-top: 0.1rem solid #666; padding: 2rem; border-bottom: 0.1rem solid #666; width: 90%;">
-    <%= link_to "ALL", events_path(view: "all"), style:"color: #666; margin-left: 1rem; text-decoration:none;"  %>
-    <%= link_to "FOR YOU", events_path(view: "for_you"), style:"color: #666; margin-left: 1rem; text-decoration:none;" %>
-    <%= link_to "TODAY", events_path(view: "today"), style:"color: #666; margin-left: 1rem; text-decoration:none;"  %>
-    <%= link_to "THIS WEEK", events_path(view: "week"), style:"color: #666; margin-left: 1rem; text-decoration:none;"  %>
+    <%= link_to "ALL", events_path(view: "all", category: params[:category]), style:"color: #666; margin-left: 1rem; text-decoration:none;"  %>
+    <%= link_to "FOR YOU", events_path(view: "for_you", category: params[:category]), style:"color: #666; margin-left: 1rem; text-decoration:none;" %>
+    <%= link_to "TODAY", events_path(view: "today", category: params[:category]), style:"color: #666; margin-left: 1rem; text-decoration:none;"  %>
+    <%= link_to "THIS WEEK", events_path(view: "week", category: params[:category]), style:"color: #666; margin-left: 1rem; text-decoration:none;"  %>
   </div>
   <div class="d-flex">
     <% if params[:view] == "all" %>
-        <h2><i class="fa-solid fa-music" style="margin-top: 4rem;margin-bottom: 4rem;font-size: 1.5rem;color:black;"></i>All Events!</h2>
-        <%= link_to 'VIEW ALL', events_path(view: 'all'), style:"text-decoration: none; background-color: white;padding: 0.2rem; color: black; border: 2px solid black; border-radius: 20px;" %>
-      <% elsif params[:view] == "for_you" %>
-        <h2><i class="fa-solid fa-music" style="margin-top: 4rem;margin-bottom: 4rem;font-size: 1.5rem;color:black;"></i>Our Picks For You!</h2>
-        <%= link_to 'See All Events', events_path, style:"text-decoration: none; background-color: white;padding: 0.2rem; color: black; border: 2px solid black; border-radius: 20px;" %>
-      <% elsif params[:view] == "today" %>
-        <h2><i class="fa-solid fa-music" style="margin-top: 4rem;margin-bottom: 4rem;font-size: 1.5rem;color:black;"></i>Events Today!</h2>
-        <%= link_to 'See All Events', events_path, style:"text-decoration: none; background-color: white;padding: 0.2rem; color: black; border: 2px solid black; border-radius: 20px;" %>
-      <% elsif params[:view] == "week" %>
-        <h2><i class="fa-solid fa-music" style="margin-top: 4rem;margin-bottom: 4rem;font-size: 1.5rem;color:black;"></i>Events This Week!</h2>
-        <%= link_to 'See All Events', events_path, style:"text-decoration: none; background-color: white;padding: 0.2rem; color: black; border: 2px solid black; border-radius: 20px;" %>
+      <h2><i class="fa-solid fa-music" style="margin-top: 4rem;margin-bottom: 4rem;font-size: 1.5rem;color:black;"></i>All <%= params[:category] %> Events!</h2>
+      <%= link_to 'Refresh your research', events_path, style: "text-decoration: none; background-color: white;padding: 0.2rem; color: black; border: 2px solid black; border-radius: 20px;" %>
+    <% elsif params[:view] == "for_you" %>
+      <h2><i class="fa-solid fa-music" style="margin-top: 4rem;margin-bottom: 4rem;font-size: 1.5rem;color:black;"></i>Our Picks For You!</h2>
+      <%= link_to 'Refresh your research', events_path, style: "text-decoration: none; background-color: white;padding: 0.2rem; color: black; border: 2px solid black; border-radius: 20px;" %>
+    <% elsif params[:view] == "today" %>
+      <h2><i class="fa-solid fa-music" style="margin-top: 4rem;margin-bottom: 4rem;font-size: 1.5rem;color:black;"></i><%= params[:category] %> Events Today!</h2>
+      <%= link_to 'Refresh your research', events_path, style: "text-decoration: none; background-color: white;padding: 0.2rem; color: black; border: 2px solid black; border-radius: 20px;" %>
+    <% elsif params[:view] == "week" %>
+      <h2><i class="fa-solid fa-music" style="margin-top: 4rem;margin-bottom: 4rem;font-size: 1.5rem;color:black;"></i><%= params[:category] %> Events This Week!</h2>
+      <%= link_to 'Refresh your research', events_path, style: "text-decoration: none; background-color: white;padding: 0.2rem; color: black; border: 2px solid black; border-radius: 20px;" %>
     <% end %>
   </div>
 
