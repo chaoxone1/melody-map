@@ -102,6 +102,7 @@ users << User.create!(
   longitude: 8.6821
 ).tap do |user|
   user.photo.attach(io: URI.open("https://res.cloudinary.com/doxvqzbhi/image/upload/v1725027600/spaarow_jfjq5i.jpg"), filename: 'spaarow_jfjq5i.jpg')
+end
 
 users << User.create!(
   email: 'sarah.maier@gmail.com',
