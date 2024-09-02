@@ -1,0 +1,11 @@
+<h1>My Followers</h1>
+
+<% if @followers.any? %>
+  <ul>
+    <% @followers.each do |follower| %>
+      <li><%= follower.name %></li> <!-- Replace 'name' with the correct attribute -->
+    <% end %>
+  </ul>
+<% else %>
+  <p>You have no followers yet.</p>
+<% end %>

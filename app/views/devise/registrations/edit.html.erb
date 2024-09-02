@@ -10,8 +10,8 @@
   <div class="form-inputs">
     <%= f.input :email, required: true, autofocus: true %>
     <%= f.input :address, required: true,
-  input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
-  wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+        input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+        wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
 %>
   current address: <%= current_user.address %>
   <div class="form-group">
