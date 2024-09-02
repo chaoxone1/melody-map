@@ -1,11 +1,48 @@
-<h1>My Followers</h1>
-
 <% if @followers.any? %>
-  <ul>
-    <% @followers.each do |follower| %>
-      <li><%= follower.name %></li> <!-- Replace 'name' with the correct attribute -->
+<div class="content-table">
+
+<div class="followers-table">
+  <h1>People I'm following <%= @following.count %></h1>
+<table class="table">
+  <caption></caption>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @following.each_with_index do |follower, index| %>
+      <th scope="row"><%= index+1 %></th>
+      <td><%= follower.username %></td>
+    </tr>
     <% end %>
-  </ul>
+  </tbody>
+</table>
+</div>
+
+<div class="following-table">
+  <h1>My followers <%= @followers.count %></h1>
+<table class="table">
+  <caption></caption>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @followers.each_with_index do |follower, index| %>
+      <th scope="row"><%= index+1 %></th>
+      <td><%= follower.username %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</div>
 <% else %>
   <p>You have no followers yet.</p>
 <% end %>
