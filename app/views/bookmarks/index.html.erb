@@ -5,7 +5,7 @@
       <div class="row justify-content-center">
         <% if @upcoming_events.count > 0 %>
           <% @upcoming_events.each do |favorite| %>
-            <div class="col-6 mb-4 event-card">
+            <div class="col-4 mb-4 event-card">
               <div>
                 <div class="d-block">
                   <%= cl_image_tag favorite.favoritable.photo.key, alt: favorite.favoritable.name, style: "width:80%" %>
