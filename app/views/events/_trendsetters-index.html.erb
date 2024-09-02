@@ -49,13 +49,15 @@
           </div>
           <!-- Follow Button -->
           <div class="trendsetters-follow-button">
-            <% if current_user.following?(user) %>
-              <%= link_to follower_path(user), data: { turbo_method: "DELETE" }, class: 'like-heart' do %>
-               <i class="fas fa-heart"></i>
-              <% end %>
-            <% else %>
-              <%= link_to follower_path(user), data: { turbo_method: "POST" }, class: 'like-heart-missing' do %>
-              <i class="far fa-heart"></i>
+            <% if user_signed_in? %>
+              <% if current_user.following?(user) %>
+                <%= link_to follower_path(user), data: { turbo_method: "DELETE" }, class: 'like-heart' do %>
+                  <i class="fas fa-heart"></i>
+                <% end %>
+              <% else %>
+                <%= link_to follower_path(user), data: { turbo_method: "POST" }, class: 'like-heart-missing' do %>
+                <i class="far fa-heart"></i>
+                <% end %>
               <% end %>
             <% end %>
           </div>
