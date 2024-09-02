@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #ffffff;
+  text-decoration: none;
 }
 
 .page-title {
@@ -56,10 +57,13 @@ body {
   font-size: 24px;
   color: #333;
 }
+
 .number {
   font-weight: bold;
 }
-.follower-count, .upcoming-events {
+
+.follower-count,
+.upcoming-events {
   margin-top: 10px;
   font-size: 14px;
   color: #555;
@@ -71,7 +75,8 @@ body {
   margin-top: 20px;
 }
 
-.follow-button, .details-button {
+.follow-button,
+.details-button {
   background-color: #f4c0e8;
   border: 1px solid #f4c0e8;
   color: black;
@@ -85,7 +90,20 @@ body {
   font-size: 14px;
 }
 
-.follow-button:hover, .details-button:hover {
+.follow-button:hover,
+.details-button:hover {
   background-color: black;
   color: #fff;
+}
+
+/* Remove text underline in the trendsetter cards */
+.trendsetter-card a {
+  text-decoration: none;
+}
+
+/* Ensure other text elements within the card are not underlined */
+.trendsetter-card p,
+.trendsetter-card span,
+.trendsetter-card .number {
+  text-decoration: none;
 }

@@ -51,14 +51,13 @@
           <div class="trendsetters-follow-button">
             <% if current_user.following?(user) %>
               <%= link_to follower_path(user), data: { turbo_method: "DELETE" }, class: 'like-heart' do %>
-              <i class="fa-solid fa-heart"></i>
+               <i class="fas fa-heart"></i>
               <% end %>
             <% else %>
               <%= link_to follower_path(user), data: { turbo_method: "POST" }, class: 'like-heart-missing' do %>
-              <i class="fa-thin fa-heart"></i>
+              <i class="far fa-heart"></i>
               <% end %>
             <% end %>
-
           </div>
           </div>
       <% end  %>

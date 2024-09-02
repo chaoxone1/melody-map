@@ -68,40 +68,45 @@ body {
   margin-bottom: 10px;
 }
 
-.follow-button-container {
-  background-color: #f4c0e8;
-  border: 1px solid #f4c0e8;
-  color: #333;
-  padding: 10px 10px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: bold;
+.like-heart,
+.like-heart-missing {
+  font-size: 24px;
+  color: #000;
+  transition: color 0.3s;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
 }
 
-.follow-button-container:hover {
-  background-color: black;
+.like-heart i {
+  color: red; /* Red color for the filled heart */
+}
+
+.like-heart-missing i {
+  color: black; /* Black color for the empty heart */
+}
+
+.like-heart:hover i,
+.like-heart-missing:hover i {
+  color: darkred; /* Darker red or black when hovering */
 }
 
 .events-section {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  color: black;
 }
 
 .events-card {
-  background-color: #f4c0e8;
-  border-radius: 8px;
   padding: 20px;
-  text-align: center;
-  font-size: 1.2em;
-  color: #333;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px 0;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  color: black;
 }
 
-.events-card h3 {
-  margin: 0;
+.events-card:hover {
+  background-color: pink;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

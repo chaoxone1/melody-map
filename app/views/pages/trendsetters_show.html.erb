@@ -13,16 +13,24 @@
     <div class="follower-info">
       <div class="follower-count">2000 followers</div>
       <div class="follow-button-container">
-        <%= link_to "Follow / Unfollow", class: "follow-button" %>
+        <% if current_user.following?(@trendsetter) %>
+          <%= link_to follower_path(@trendsetter), data: { turbo_method: "DELETE" }, class: 'like-heart' do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
+        <% else %>
+          <%= link_to follower_path(@trendsetter), data: { turbo_method: "POST" }, class: 'like-heart-missing' do %>
+            <i class="far fa-heart"></i>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
 
   <div class="events-section">
-    <div class="events-card">
+    <div class="events-card upcoming-events">
       <h3>Upcoming events</h3>
     </div>
-    <div class="events-card">
+    <div class="events-card past-events">
       <h3>Past events</h3>
     </div>
   </div>
