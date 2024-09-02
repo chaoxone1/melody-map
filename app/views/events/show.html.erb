@@ -40,10 +40,10 @@
             <% end %>
             <% if @event.user == current_user  %>
               <%= form_with url: event_path(@event), method: :delete, local: true do %>
-                <%= submit_tag 'Delete', data: { confirm: 'Are you sure you want to delete this event?' }, class: 'btn btn-danger' %>
+                <%= submit_tag 'Delete', data: { confirm: 'Are you sure you want to delete this event?' }, class: 'btn btn-danger unbookmark_button' %>
               <% end %>
-              
-              <%= link_to "Edit Event", edit_event_path, class:"btn btn-outline-info", style:"border-radius 4px; padding:0.6rem"%>
+
+              <%= link_to "Edit Event", edit_event_path, class:"btn btn-outline-info", style:"border-radius 4px; padding: 10px 20px; font-weight: bold; font-size: 14px"%>
             <% end %>
           </div>
 
