@@ -1,3 +1,7 @@
+.trendsetters-content {
+  padding-bottom: 2rem;
+}
+
 .trendsetter-logo-area {
   display: flex;
   justify-content: center;
@@ -38,4 +42,27 @@ font-family:Kanit;
 line-height:auto;
 border-style:hidden;
 outline:none;
+}
+
+.trendsetter-index-card {
+  text-align: center;
+}
+
+.trendsetter-index-picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+}
+
+.follower-amount {
+  color:#B1B1B1;
+  text-align:center;
+  vertical-align:text-top;
+  font-size:14px;
+  font-family:Kanit;
+  line-height:auto;
+  border-style:hidden;
+  outline:none;
 }

@@ -1,4 +1,4 @@
-<div class="content">
+<div class="trendsetters-content">
   <!-- Logo Area -->
   <div class="trendsetter-logo-area">
     <div class="trendsetter-logo"><%= image_tag 'trendsetter-circle.svg' %>
@@ -18,7 +18,7 @@
       <% @top3_trendsetters.each do |user| %>
         <div class="trendsetter-index-card">
 <!--Avatar Picure -->
-          <div class="trendsetter-index-picture"></div>
+          <div class="trendsetter-index-picture">
             <% if user.photo.attached? %>
               <%= cl_image_tag user.photo.key,
               class: "avatar dropdown-toggle",
@@ -27,7 +27,8 @@
               'aria-haspopup': true,
               'aria-expanded': false,
               width: "40",
-              height: "40" %>
+              height: "40",
+              style: "display: block" %>
             <% else %>
               <%= image_tag 'unknown-user.jpeg',
               class: "avatar dropdown-toggle",
@@ -38,8 +39,17 @@
               width: "40",
               height: "40" %>
             <% end  %>
+          </div>
           <div class="trendsetter-index-name smalltitle">
             <%= user.username %>
+          </div>
+          <!-- Follower amount section-->
+          <div class="follower-amount">
+            210 Followers
+          </div>
+          <!-- Follow Button -->
+          <div class="trendsetters-follow-button">
+            <%= link_to 'Follow', "#", class: 'premium-button' %>
           </div>
           </div>
       <% end  %>

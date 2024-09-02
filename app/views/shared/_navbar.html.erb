@@ -20,7 +20,7 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item my-auto" >
-            <p class="nav-link my-auto username" style="color:black; font-style:blod; margin-top:0.5rem; margin-right:0.5rem;" ><%= current_user.username %></p>
+            <p class="nav-link my-auto username"><%= current_user.username %></p>
           </li>
           <li class="nav-item dropdown">
             <% if current_user.photo.attached? %>
