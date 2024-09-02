@@ -45,11 +45,20 @@
           </div>
           <!-- Follower amount section-->
           <div class="follower-amount">
-            210 Followers
+            <%= user.followers.count %> Followers
           </div>
           <!-- Follow Button -->
           <div class="trendsetters-follow-button">
-            <%= link_to 'Follow', "#", class: 'premium-button' %>
+            <% if current_user.following?(user) %>
+              <%= link_to follower_path(user), data: { turbo_method: "DELETE" }, class: 'like-heart' do %>
+              <i class="fa-solid fa-heart"></i>
+              <% end %>
+            <% else %>
+              <%= link_to follower_path(user), data: { turbo_method: "POST" }, class: 'like-heart-missing' do %>
+              <i class="fa-thin fa-heart"></i>
+              <% end %>
+            <% end %>
+
           </div>
           </div>
       <% end  %>

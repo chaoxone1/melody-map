@@ -85,3 +85,38 @@ h1 {
   color: #666;
   margin-top: 10px;
 }
+
+.events-navigation {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.event-nav-button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  background-color: rgb(221, 221, 221);
+  color: black;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.event-nav-button.active {
+  background-color: pink; 
+}
+
+.event-nav-button:hover {
+  background-color: pink;
+}
+
+.events-grid {
+  display: none;
+}
+
+.active-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}

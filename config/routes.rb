@@ -19,6 +19,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :followers do
+    member do
+      post 'follow', to: 'creators#follow'
+    end
+  end
+
   resources :users, only: [:show]
   resources :bookmarks, only: [:index, :create, :destroy]
   resources :followers, only: [:index, :create, :destroy]
@@ -29,4 +35,6 @@ Rails.application.routes.draw do
   get 'myspaces', to: 'pages#myspaces'
   get 'myspace', to: 'pages#myspace'
   get 'my_created_events', to: 'pages#created_events'
+  post 'followers/:id', to: 'followers#create'
+  delete 'followers/:id', to: 'followers#destroy'
 end

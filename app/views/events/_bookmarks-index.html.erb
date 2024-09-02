@@ -1,0 +1,25 @@
+<div class="row">
+  <h1 style="text-align:left;margin-top: 5rem; margin-bottom: 5rem;"><i class="fa-solid fa-bookmark" style="font-size: 2rem; color: black;"></i>Most Bookmarked events</h1>
+    <% @most_bookmarked.each do |event| %>
+      <% if event.favorited.count >= 1 %>
+        <div class="col-4 mb-4">
+          <div>
+            <div class="d-block mb-4">
+              <%= cl_image_tag event.photo.key, alt: event.name, style: "width:80%" %>
+            </div>
+            <div>
+              <p style="margin-left: 0.5rem; margin-bottom: 0; display: inline-block; padding: 0.2rem; color: pink; border: 2px solid pink; border-radius: 20px;"><%= event.category %></p>
+              <a href="<%= event_path(event) %>" style="text-decoration: none; display: block; color: black; font-size: 1.5rem; font-weight:bold;"><%= event.name %></a>
+              <p style="margin: 0; color: #666;"><%= event.location %></p>
+              <p style="margin: 0; color: #666;"><%= event.date %></p>
+              <p style="color: #666;">
+                <i class="fa-regular fa-bookmark" style="font-size: 1rem; color: #666;"></i>
+                <strong><%= event.favorited.count %></strong>
+                <%= event.favorited.count == 1 ? 'Bookmark' : 'Bookmarks' %>
+              </p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+</div>

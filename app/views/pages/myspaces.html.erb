@@ -1,5 +1,11 @@
 <div class="myspace-buttons">
-  <%= link_to 'Followers(36)', followers_path, class: 'myspace-button followers-button' %>
-  <%= link_to 'My Bookmarks(1)', bookmarks_path, class: 'myspace-button bookmarks-button' %>
-  <%= link_to 'My Events(4)', events_path, class: 'myspace-button events-button' %>
+  <%= link_to followers_path, class: 'myspace-button followers-button' do %>
+  My Followers (<%= @followers.count %>)
+  <% end %>
+  <%= link_to bookmarks_path, class: 'myspace-button bookmarks-button' do %>
+  My Bookmarks (<%= @bookmarks.count %>)
+  <% end %>
+  <%= link_to my_created_events_path, class: 'myspace-button events-button' do %>
+  My Events (<%= @events.count %>)
+  <% end %>
 </div>

@@ -1,15 +1,31 @@
 <div class="container">
   <h1>My Created Events</h1>
+
   <div class="search-bar">
-    <input type="text" placeholder="Search events..." class="search-input">
+    <input type="text" id="event-search-input" placeholder="Search events..." class="search-input">
   </div>
 
   <div class="events-navigation">
-    <button class="event-nav-button">Upcoming events</button>
-    <button class="event-nav-button">Past events</button>
+    <button class="event-nav-button active" data-target="upcoming">Upcoming events</button>
+    <button class="event-nav-button" data-target="past">Past events</button>
   </div>
-  <div class="events-grid">
-    <% @events.each do |event| %>
+
+  <div id="upcoming-events" class="events-grid active-section">
+    <% @events.where('date >= ?', Date.today).each do |event| %>
+      <div class="event-card">
+        <h3><%= link_to event.name, event_path(event.id), style:"text-decoration: none; color: black" %></h3>
+        <% if event.photo.attached? %>
+          <%= cl_image_tag event.photo.key, class: "event-image" %>
+        <% else %>
+          <img src="https://via.placeholder.com/150" alt="Placeholder Image" class="event-image">
+        <% end %>
+        <p><%= event.description %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <div id="past-events" class="events-grid">
+    <% @events.where('date < ?', Date.today).each do |event| %>
       <div class="event-card">
         <h3><%= link_to event.name, event_path(event.id), style:"text-decoration: none; color: black" %></h3>
         <% if event.photo.attached? %>
@@ -22,3 +38,22 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const buttons = document.querySelectorAll('.event-nav-button');
+    const sections = document.querySelectorAll('.events-grid');
+    const searchInput = document.getElementById('event-search-input');
+
+
+    buttons.forEach(button => {
+      button.addEventListener('click', function() {
+        buttons.forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+        sections.forEach(section => section.classList.remove('active-section'));
+        const targetSection = document.getElementById(this.getAttribute('data-target') + '-events');
+        targetSection.classList.add('active-section');
+      });
+    });
+  });
+</script>

@@ -1,0 +1,48 @@
+<% if @followers.any? %>
+<div class="content-table">
+
+<div class="followers-table">
+  <h1>People I'm following <%= @following.count %></h1>
+<table class="table">
+  <caption></caption>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @following.each_with_index do |follower, index| %>
+      <th scope="row"><%= index+1 %></th>
+      <td><%= follower.username %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<div class="following-table">
+  <h1>My followers <%= @followers.count %></h1>
+<table class="table">
+  <caption></caption>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @followers.each_with_index do |follower, index| %>
+      <th scope="row"><%= index+1 %></th>
+      <td><%= follower.username %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</div>
+<% else %>
+  <p>You have no followers yet.</p>
+<% end %>
