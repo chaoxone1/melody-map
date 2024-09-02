@@ -1,5 +1,4 @@
 <h1 class="page-title">Trendsetters</h1>
-
 <div class="trendsetters-container" style="background-color:#FFFFFF;">
   <% @trendsetters.each do |user| %>
     <div class="trendsetter-card">
@@ -15,7 +14,7 @@
           <%= user.username %>
         </div>
       </div>
-      <div class="follower-count number">
+      <div class="number">
         <%= user.followers.count %> Followers
       </div>
       <div class="upcoming-events">
@@ -27,7 +26,7 @@
         <% end %>
       </div>
       <div class="card-buttons">
-        <%= link_to "Follow", trendsetter_path(user), class: "follow-button" %>
+        <%= link_to "Follow", follower_path(user), data: {turbo_method: "POST"}, class: "follow-button" %>
         <%= link_to "Details", trendsetter_path(user), class: "details-button" %>
       </div>
     </div>

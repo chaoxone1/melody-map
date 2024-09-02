@@ -109,9 +109,9 @@ class EventsController < ApplicationController
   end
 
   def top3_trendsetters
-    @trendsetters = User.left_joins(:followers)
+    @trendsetters = User.left_joins(:follows)
     .group('users.id')
-    .order('COUNT(followers.id) DESC')
+    .order('COUNT(follows.following_id) DESC')
     .limit(3)
   end
 

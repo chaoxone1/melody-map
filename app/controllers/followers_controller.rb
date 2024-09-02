@@ -1,22 +1,20 @@
 class FollowersController < ApplicationController
 
-  def follow
+  def create
     @user = User.find(params[:id])
     # Logic for following the creator, e.g., adding the creator to the user's followed creators
-    current_user.follow(@user)
+    Follow.create(user_id:current_user.id, following_id:@user.id)
     redirect_to event_path(@user.events.first), notice: 'User followed successfully.'
   end
 
-  def create
-
-  end
-
-  def delete
-
+  def destroy
+    @user = User.find(params[:id])
+    # Logic for following the creator, e.g., adding the creator to the user's followed creators
+    Follow.find_by(user_id:current_user.id, following_id:@user.id).destroy
+    redirect_to event_path(@user.events.first), notice: 'User unfollowed successfully.'
   end
 
   def index
     @followers = current_user.followers
-
   end
 end
