@@ -2,32 +2,44 @@
 <div class="trendsetters-container" style="background-color:#FFFFFF;">
   <% @trendsetters.each do |user| %>
     <div class="trendsetter-card">
-      <div class="avatar-container-index">
-        <div class="avatar">
-          <% if user.photo.attached? %>
-            <%= cl_image_tag user.photo.key, class: "avatar" %>
+      <!-- Make the entire card clickable -->
+      <%= link_to trendsetter_path(user), class: "card-link" do %>
+        <div class="avatar-container-index">
+          <div class="avatar">
+            <% if user.photo.attached? %>
+              <%= cl_image_tag user.photo.key, class: "avatar" %>
+            <% else %>
+              <span class="avatar-initials"><%= user.username.first(2).upcase %></span>
+            <% end %>
+          </div>
+          <div class="avatar-name">
+            <%= user.username %>
+          </div>
+        </div>
+        <div class="number">
+          <%= user.followers.count %> Followers
+        </div>
+        <div class="upcoming-events">
+          Upcoming Events:
+          <% if (next_event = user.events.where("date > ?", Time.current).order(:date).first) %>
+            <%= next_event.name %>
           <% else %>
-            <span class="avatar-initials"><%= user.username.first(2).upcase %></span>
+            No upcoming events
           <% end %>
         </div>
-        <div class="avatar-name">
-          <%= user.username %>
-        </div>
-      </div>
-      <div class="number">
-        <%= user.followers.count %> Followers
-      </div>
-      <div class="upcoming-events">
-        Upcoming Events:
-        <% if (next_event = user.events.where("date > ?", Time.current).order(:date).first) %>
-          <%= next_event.name %>
-        <% else %>
-          No upcoming events
-        <% end %>
-      </div>
+      <% end %> <!-- Close the link wrapping the card content -->
+
+      <!-- Heart icon for follow/unfollow -->
       <div class="card-buttons">
-        <%= link_to "Follow", follower_path(user), data: {turbo_method: "POST"}, class: "follow-button" %>
-        <%= link_to "Details", trendsetter_path(user), class: "details-button" %>
+        <% if current_user.following?(user) %>
+          <%= link_to follower_path(user), data: { turbo_method: "DELETE" }, class: 'like-heart' do %>
+            <i class="fas fa-heart" style="color: red;"></i> <!-- Red solid heart for following -->
+          <% end %>
+        <% else %>
+          <%= link_to follower_path(user), data: { turbo_method: "POST" }, class: 'like-heart-missing' do %>
+            <i class="far fa-heart" style="color: black;"></i> <!-- Empty black heart for not following -->
+          <% end %>
+        <% end %>
       </div>
     </div>
   <% end %>
