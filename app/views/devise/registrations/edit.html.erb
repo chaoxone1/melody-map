@@ -18,7 +18,19 @@
     <%= f.input :photo, as: :file %>
   </div>
     <%= f.input :username, required: true %>
-    <%= f.input :categories, required: true %>
+    <!-- Updated categories -->
+   <div class="form-group">
+  <%= f.label :categories, "Categories", class: "form-label string required" %>
+  <div class="checkbox-group">
+    <% ['Pop', 'Rock', 'Hip-Hop', 'Electronic', 'Country', 'Classic'].each do |category| %>
+      <div class="form-check">
+        <%= check_box_tag "user[categories_list][]", category, current_user.categories.include?(category), class: "form-check-input" %>
+        <%= label_tag "user_categories_#{category}", category, class: "form-check-label" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
     <%= f.input :radius, required: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

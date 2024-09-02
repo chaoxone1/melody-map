@@ -18,6 +18,15 @@ class User < ApplicationRecord
   has_many :following_relationships, foreign_key: :user_id, class_name: 'Follow'
   has_many :following, through: :following_relationships, source: :following
 
+
+  def categories_list
+    categories.present? ? categories.split(",") : []
+  end
+
+  def categories_list=(value)
+    self.categories = value.reject(&:blank?).join(",")
+  end
+  
   def following?(other_user)
     return false if other_user.nil?
     following_relationships.exists?(following_id: other_user.id)
