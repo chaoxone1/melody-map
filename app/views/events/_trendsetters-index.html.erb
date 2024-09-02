@@ -1,67 +1,78 @@
 <div class="trendsetters-content">
   <!-- Logo Area -->
   <div class="trendsetter-logo-area">
-    <div class="trendsetter-logo"><%= image_tag 'trendsetter-circle.svg' %>
-    </div>
+    <div class="trendsetter-logo"><%= image_tag 'trendsetter-circle.svg' %></div>
   </div>
+
   <!-- Headline Area -->
   <div class="trendsetter-headline">
     <div class="trendsetter-title">
       <h2><i class="fa-solid fa-user" style="margin-top: 4rem;margin-bottom: 4rem;font-size: 1.5rem;color:black;"></i>Top Trendsetters</h2>
     </div>
     <div class="trendsetter-viewall">
-        <h2><%= link_to 'View all', trendsetters_path, style: 'text-decoration: none; color: #000000';%> </h2>
+      <h2><%= link_to 'View all', trendsetters_path, style: 'text-decoration: none; color: #000000' %></h2>
     </div>
   </div>
-<!-- Cards Area -->
+
+  <!-- Cards Area -->
   <div class="trendsetter-card-area">
-      <% @top3_trendsetters.each do |user| %>
-        <div class="trendsetter-index-card">
-<!--Avatar Picure -->
-          <div class="trendsetter-index-picture">
-            <% if user.photo.attached? %>
-              <%= cl_image_tag user.photo.key,
-              class: "avatar dropdown-toggle",
-              id: "navbarDropdown",
-              data: { bs_toggle: "dropdown" },
-              'aria-haspopup': true,
-              'aria-expanded': false,
-              width: "40",
-              height: "40",
-              style: "display: block" %>
-            <% else %>
-              <%= image_tag 'unknown-user.jpeg',
-              class: "avatar dropdown-toggle",
-              id: "navbarDropdown",
-              data: { bs_toggle: "dropdown" },
-              'aria-haspopup': true,
-              'aria-expanded': false,
-              width: "40",
-              height: "40" %>
-            <% end  %>
-          </div>
-          <div class="trendsetter-index-name smalltitle">
-            <%= user.username %>
-          </div>
-          <!-- Follower amount section-->
-          <div class="follower-amount">
-            <%= user.followers.count %> Followers
-          </div>
-          <!-- Follow Button -->
-          <div class="trendsetters-follow-button">
+    <% @top3_trendsetters.each do |user| %>
+      <div class="trendsetter-index-card">
+        <!-- Avatar Picture -->
+        <div class="trendsetter-index-picture">
+          <% if user.photo.attached? %>
+            <%= cl_image_tag user.photo.key,
+                class: "avatar dropdown-toggle",
+                id: "navbarDropdown",
+                data: { bs_toggle: "dropdown" },
+                'aria-haspopup': true,
+                'aria-expanded': false,
+                width: "40",
+                height: "40",
+                style: "display: block" %>
+          <% else %>
+            <%= image_tag 'unknown-user.jpeg',
+                class: "avatar dropdown-toggle",
+                id: "navbarDropdown",
+                data: { bs_toggle: "dropdown" },
+                'aria-haspopup': true,
+                'aria-expanded': false,
+                width: "40",
+                height: "40" %>
+          <% end %>
+        </div>
+
+        <div class="trendsetter-index-name smalltitle">
+          <%= user.username %>
+        </div>
+
+        <!-- Follower amount section-->
+        <div class="follower-amount">
+          <%= user.followers.count %> Followers
+        </div>
+
+        <!-- Follow Button -->
+        <div class="trendsetters-follow-button">
+          <% if user_signed_in? %>
             <% if current_user.following?(user) %>
               <%= link_to follower_path(user), data: { turbo_method: "DELETE" }, class: 'like-heart' do %>
-              <i class="fa-solid fa-heart"></i>
+                <i class="fa-solid fa-heart"></i>
               <% end %>
             <% else %>
               <%= link_to follower_path(user), data: { turbo_method: "POST" }, class: 'like-heart-missing' do %>
-              <i class="fa-thin fa-heart"></i>
+                <i class="fa-thin fa-heart"></i>
               <% end %>
             <% end %>
+          <% else %>
+            <!-- Optional: Show a different button or message for non-logged-in users -->
+            <%= link_to new_user_session_path, class: 'like-heart-missing' do %>
+              <i class="fa-thin fa-heart"></i>
+            <% end %>
+          <% end %>
+        </div>
 
-          </div>
-          </div>
-      <% end  %>
+      </div>
+    <% end %>
   </div>
   <!-- End of content -->
 </div>
