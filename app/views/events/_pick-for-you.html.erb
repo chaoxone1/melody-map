@@ -8,7 +8,9 @@
     <%= submit_tag "Pop", name: "category", value: "Pop", style:"margin-left: 2rem;border-radius: 20px; background-color:lightpink; padding: 0.2rem; border: 0.2rem solid pink;" %>
     <%= submit_tag "Classic", name: "category", value: "Classic", style:"margin-left: 2rem;border-radius: 20px; background-color:lightpink; padding: 0.2rem; border: 0.2rem solid pink;" %>
     <%= submit_tag "Country", name: "category", value: "Country", style:"margin-left: 2rem;border-radius: 20px; background-color:lightpink; padding: 0.2rem; border: 0.2rem solid pink;" %>
-    <%= submit_tag "For You", name: "category", value: "For You", style:"margin-left: 2rem;border-radius: 20px; background-color:lightpink; padding: 0.2rem; border: 0.2rem solid pink;" %>
+    <% if current_user %>
+      <%= submit_tag "For You", name: "category", value: "For You", style:"margin-left: 2rem;border-radius: 20px; background-color:lightpink; padding: 0.2rem; border: 0.2rem solid pink;" %>
+    <% end %>
   <% end %>
   </div>
   <div style="margin: 3rem; border-top: 0.1rem solid #666; padding: 2rem; border-bottom: 0.1rem solid #666; width: 90%;">
