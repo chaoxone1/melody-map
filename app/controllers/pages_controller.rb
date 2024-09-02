@@ -11,6 +11,13 @@ class PagesController < ApplicationController
   def trendsetters_show
     # 1. List of top 10 users with the most follows
     @trendsetter = User.find(params[:id])
+
+    @upcoming_events = @trendsetter.events.select do |event|
+      event.date >= Date.today
+    end
+    @past_events = @trendsetter.events.select do |event|
+      event.date < Date.today
+    end
   end
 
   def myspaces
