@@ -17,9 +17,10 @@ users << User.create!(
   radius: 20,
   latitude: 52.5200,
   longitude: 13.4050
-).tap do |user|
-  user.photo.attach(io: URI.open("https://res.cloudinary.com/doxvqzbhi/image/upload/v1724947177/production/5eevp6xn6po4d5xcz8xeke70n6yd.jpg"), filename: '5eevp6xn6po4d5xcz8xeke70n6yd.jpg')
-end
+)
+# .tap do |user|
+#   user.photo.attach(io: URI.open("https://res.cloudinary.com/doxvqzbhi/image/upload/v1724947177/production/5eevp6xn6po4d5xcz8xeke70n6yd.jpg"), filename: '5eevp6xn6po4d5xcz8xeke70n6yd.jpg')
+# end
 
 users << User.create!(
   email: 'danmuller.dev.98@gmail.com',
