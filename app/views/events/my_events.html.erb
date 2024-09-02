@@ -1,0 +1,25 @@
+<div class="container mt-4">
+  <h1>My Created Events</h1>
+
+  <%= form_with(url: my_events_path, method: :get, local: true, class: "mb-3") do %>
+    <div class="input-group">
+      <%= text_field_tag :query, params[:query], placeholder: "Search your events...", class: "form-control" %>
+      <div class="input-group-append">
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @events.any? %>
+    <ul class="list-group">
+      <% @events.each do |event| %>
+        <li class="list-group-item">
+          <%= link_to event.name, event_path(event) %>
+          <span class="text-muted"><%= event.date %></span>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No events found.</p>
+  <% end %>
+</div>
