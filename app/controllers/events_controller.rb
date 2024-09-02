@@ -114,6 +114,10 @@ class EventsController < ApplicationController
     .order('COUNT(followers.id) DESC')
     .limit(3)
   end
+  
+  def user_params
+    params.require(:user).permit(:email, :address, :photo, :username, :radius, :password, :password_confirmation, :current_password, categories: [])
+  end
 
   private
 

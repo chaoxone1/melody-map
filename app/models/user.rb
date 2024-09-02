@@ -17,4 +17,11 @@ class User < ApplicationRecord
   has_many :following_relationships, foreign_key: :user_id, class_name: 'Follower'
   has_many :following, through: :following_relationships, source: :following
 
+  def categories_list
+    categories.present? ? categories.split(",") : []
+  end
+
+  def categories_list=(value)
+    self.categories = value.reject(&:blank?).join(",")
+  end
 end
