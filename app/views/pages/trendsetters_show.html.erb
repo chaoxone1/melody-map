@@ -5,13 +5,20 @@
 
   <div class="profile-section">
     <div class="avatar-container">
-      <div class="trendsetter_avatar">
-        <span class="avatar-initials">Picture</span>
+      <div class="avatar">
+            <% if @trendsetter.photo.attached? %>
+              <%= cl_image_tag @trendsetter.photo.key, class: "avatar" %>
+            <% else %>
+              <span class="avatar-initials"><%= @trendsetter.username.first(2).upcase %></span>
+            <% end %>
       </div>
     </div>
 
     <div class="follower-info">
-      <div class="follower-count">2000 followers</div>
+      <div class="follower-count">
+      <%= @trendsetter.followers.count %>
+      <%= @trendsetter.followers.count == 1 ? 'Follower' : 'Followers' %>
+    </div>
       <div class="follow-button-container">
         <% if current_user.following?(@trendsetter) %>
           <%= link_to follower_path(@trendsetter), data: { turbo_method: "DELETE" }, class: 'like-heart' do %>
@@ -29,9 +36,61 @@
   <div class="events-section">
     <div class="events-card upcoming-events">
       <h3>Upcoming events</h3>
+      <div class="row justify-content-center">
+        <% if @upcoming_events.count > 0 %>
+          <% @upcoming_events.each do |event| %>
+            <div class="col-4 mb-4 event-card">
+              <div>
+                <div class="d-block">
+                  <%= cl_image_tag event.photo.key, alt: event.name, style: "width:80%" %>
+                </div>
+                <div>
+                  <p class="event-category"><%= event.category %></p>
+                  <a href="<%= event_path(event) %>" class="event-title"><%= event.name %></a>
+                  <p class="event-location"><%= event.location %></p>
+                  <p class="event-date"><%= event.date %></p>
+                  <p class="event-bookmarks">
+                    <i class="fa-regular fa-bookmark" style="color: black; font-size: 1rem;"></i>
+                    <strong><%= event.favorited.count %></strong>
+                    <%= event.favorited.count == 1 ? 'Bookmark' : 'Bookmarks' %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <p class="no-events">Hey, you didn’t bookmark anything! What are your plans? <i class="fa-solid fa-face-laugh"></i></p>
+        <% end %>
+      </div>
     </div>
     <div class="events-card past-events">
       <h3>Past events</h3>
+      <div class="row justify-content-center">
+        <% if @past_events.count > 0 %>
+          <% @past_events.each do |event| %>
+            <div class="col-4 mb-4 event-card">
+              <div>
+                <div class="d-block">
+                  <%= cl_image_tag event.photo.key, alt: event.name, style: "width:80%" %>
+                </div>
+                <div>
+                  <p class="event-category"><%= event.category %></p>
+                  <a href="<%= event_path(event) %>" class="event-title"><%= event.name %></a>
+                  <p class="event-location"><%= event.location %></p>
+                  <p class="event-date"><%= event.date %></p>
+                  <p class="event-bookmarks">
+                    <i class="fa-regular fa-bookmark" style="color: black; font-size: 1rem;"></i>
+                    <strong><%= event.favorited.count %></strong>
+                    <%= event.favorited.count == 1 ? 'Bookmark' : 'Bookmarks' %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <p class="no-events">You din´t create any events in the past <i class="fa-solid fa-face-laugh" style="color:black;"></i></p>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
