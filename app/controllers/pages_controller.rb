@@ -27,4 +27,7 @@ class PagesController < ApplicationController
     @events = current_user.events
   end
 
+  def mybookmarkcount
+    @bookmarks = current_user.bookmarks.count
+  end
 end

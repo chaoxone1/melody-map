@@ -16,5 +16,6 @@ class FollowersController < ApplicationController
 
   def index
     @followers = current_user.followers
+    @following = current_user.following
   end
 end
