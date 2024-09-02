@@ -4,6 +4,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+    @most_bookmarked = Event.all
     if params[:query].present?
       @events = Event.search_by_name_and_category(params[:query])
     elsif params[:category].present?
