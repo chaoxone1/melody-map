@@ -1,7 +1,7 @@
 <div class="row">
   <div class="d-flex justify-content-around mt-5">
     <%= form_with url: events_path, method: :get do %>
-    <%= hidden_field_tag :view, params[:view] %>
+    <%= hidden_field_tag :view, params[:view] || "all" %>
     <%= submit_tag "Rock", name: "category", value: "Rock", style:"border-radius: 20px; background-color:lightpink; padding: 0.2rem; border: 0.2rem solid pink;", data: { turbo_frame: :event }, class: "#{'active' if params[:category] == 'Rock'}" %>
     <%= submit_tag "Electronic", name: "category", value: "Electronic", style:"margin-left: 2rem;border-radius: 20px; background-color:lightpink; padding: 0.2rem; border: 0.2rem solid pink;", data: { turbo_frame: :event }, class: "#{'active' if params[:category] == 'Electronic'}" %>
     <%= submit_tag "Hip-Hop", name: "category", value: "Hip-Hop", style:"margin-left: 2rem;border-radius: 20px; background-color:lightpink; padding: 0.2rem; border: 0.2rem solid pink;", data: { turbo_frame: :event }, class: "#{'active' if params[:category] == 'Hip-Hop'}" %>
@@ -13,35 +13,35 @@
     <% end %>
   <% end %>
   </div>
-  <div style="margin: 3rem; border-top: 0.1rem solid #666; padding: 2rem; border-bottom: 0.1rem solid #666; width: 90%;">
+  <div style="margin: 1rem; border-top: 0.1rem solid #666; padding: 2rem; border-bottom: 0.1rem solid #666; width: 90%;">
     <%= link_to "ALL", events_path(view: "all", category: params[:category]), style:"color: #666; margin-left: 1rem; text-decoration:none;", class: "#{'active' if params[:view] == 'all'}" %>
     <%= link_to "TODAY", events_path(view: "today", category: params[:category]), style:"color: #666; margin-left: 1rem; text-decoration:none;", class: "#{'active' if params[:view] == 'today'}"  %>
     <%= link_to "THIS WEEK", events_path(view: "week", category: params[:category]), style:"color: #666; margin-left: 1rem; text-decoration:none;", class: "#{'active' if params[:view] == 'week'}"  %>
   </div>
   <div class="d-flex">
     <% if params[:view] == "all" %>
-      <h2><i class="fa-solid fa-music" style="margin-top: 4rem;margin-bottom: 4rem;font-size: 1.5rem;color:black;"></i>All <%= params[:category] %> Events!</h2>
+      <h2><i class="fa-solid fa-music" style="margin-top: 0px;margin-bottom: 4rem;font-size: 1.5rem;color:black;"></i>All <%= params[:category] %> Events!</h2>
       <%= link_to 'Refresh your research', events_path, style: "text-decoration: none; background-color: white;padding: 0.2rem; color: black; border: 2px solid black; border-radius: 20px;" %>
     <% elsif params[:view] == "for_you" %>
-      <h2><i class="fa-solid fa-music" style="margin-top: 4rem;margin-bottom: 4rem;font-size: 1.5rem;color:black;"></i>Our Picks For You!</h2>
+      <h2><i class="fa-solid fa-music" style="margin-top: 0px;margin-bottom: 4rem;font-size: 1.5rem;color:black;"></i>Our Picks For You!</h2>
       <%= link_to 'Refresh your research', events_path, style: "text-decoration: none; background-color: white;padding: 0.2rem; color: black; border: 2px solid black; border-radius: 20px;" %>
     <% elsif params[:view] == "today" %>
-      <h2><i class="fa-solid fa-music" style="margin-top: 4rem;margin-bottom: 4rem;font-size: 1.5rem;color:black;"></i><%= params[:category] %> Events Today!</h2>
+      <h2><i class="fa-solid fa-music" style="margin-top: 0px;margin-bottom: 4rem;font-size: 1.5rem;color:black;"></i><%= params[:category] %> Events Today!</h2>
       <%= link_to 'Refresh your research', events_path, style: "text-decoration: none; background-color: white;padding: 0.2rem; color: black; border: 2px solid black; border-radius: 20px;" %>
     <% elsif params[:view] == "week" %>
-      <h2><i class="fa-solid fa-music" style="margin-top: 4rem;margin-bottom: 4rem;font-size: 1.5rem;color:black;"></i><%= params[:category] %> Events This Week!</h2>
+      <h2><i class="fa-solid fa-music" style="margin-top: 0px;margin-bottom: 4rem;font-size: 1.5rem;color:black;"></i><%= params[:category] %> Events This Week!</h2>
       <%= link_to 'Refresh your research', events_path, style: "text-decoration: none; background-color: white;padding: 0.2rem; color: black; border: 2px solid black; border-radius: 20px;" %>
     <% end %>
   </div>
 
   <% @events.each do |event| %>
-    <div class="col-4 mb-4">
+    <div class="col-4 mb-0">
       <div>
-        <div class="d-block mb-4">
+        <div class="d-block mb-1">
           <%= cl_image_tag event.photo.key, alt: event.name, style: "width:80%; max-height:140px; border-radius: 2px;" %>
         </div>
         <div>
-          <p style="margin-left: 0.5rem; margin-bottom: 0; display: inline-block; padding: 0.2rem; color: pink; border: 2px solid pink; border-radius: 20px;"><%= event.category %></p>
+          <p style="margin-bottom: 0; display: inline-block; padding: 0.2rem; color: pink; border: 2px solid pink; border-radius: 20px;"><%= event.category %></p>
           <a href="<%= event_path(event) %>" data-turbo="false" style="text-decoration: none; display: block; color: black; font-size: 1.5rem; font-weight:bold;"><%= event.name %></a>
           <p style="margin: 0; color: #666;"><%= event.location %></p>
           <p style="margin: 0; color: #666;"><%= event.date.strftime("%B %d, %Y %I:%M %p") %></p>
