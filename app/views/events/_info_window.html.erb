@@ -1,8 +1,8 @@
 <div class="mapbox-popup">
   <%= cl_image_tag event.photo.key, class:"popup-image" %>
   <div class="popup-content">
-    <p class="popup-title">Name: <%= event.name %></p>
-    <p class="popup-address">Address: <%= event.location %></p>
-    <p class="popup-date">Date: <%= event.date %></p>
+    <p class="popup-title"><%= event.name %></p>
+    <p class="popup-address"><%= event.location %></p>
+    <p class="popup-date"><%= event.date %></p>
   </div>
 </div>
