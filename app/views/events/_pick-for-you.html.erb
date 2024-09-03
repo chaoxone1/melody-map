@@ -44,7 +44,7 @@
           <p style="margin-left: 0.5rem; margin-bottom: 0; display: inline-block; padding: 0.2rem; color: pink; border: 2px solid pink; border-radius: 20px;"><%= event.category %></p>
           <a href="<%= event_path(event) %>" data-turbo="false" style="text-decoration: none; display: block; color: black; font-size: 1.5rem; font-weight:bold;"><%= event.name %></a>
           <p style="margin: 0; color: #666;"><%= event.location %></p>
-          <p style="margin: 0; color: #666;"><%= event.date %></p>
+          <p style="margin: 0; color: #666;"><%= event.date.strftime("%B %d, %Y %I:%M %p") %></p>
           <p style="color: #666;">
             <i class="fa-regular fa-bookmark" style="font-size: 1rem; color: #666;"></i>
             <strong><%= event.favorited.count %></strong>
