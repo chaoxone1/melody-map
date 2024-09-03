@@ -101,6 +101,7 @@ class EventsController < ApplicationController
 
   def my_events
     @events = current_user.events
+    if params[:query].present?
   end
 
   def bookmark
