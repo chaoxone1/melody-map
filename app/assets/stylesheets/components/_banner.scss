@@ -2,18 +2,22 @@
 
 @keyframes wavePulse {
   0% {
-    transform: scale(1);
+    transform: scale(1) rotate(0deg);
   }
-  40% {
-    transform: scale(1.3);
+  25% {
+    transform: scale(1.2) rotate(2deg);
   }
-  70% {
-    transform: scale(1.1);
+  50% {
+    transform: scale(1.4) rotate(-2deg);
+  }
+  75% {
+    transform: scale(1.2) rotate(2deg);
   }
   100% {
-    transform: scale(1);
+    transform: scale(1) rotate(0deg);
   }
 }
+
 .banner-stararea {
   margin-right: 2rem;
   display: flex;
@@ -23,7 +27,7 @@
 
 .starsign {
   display: flex;
-  animation: wavePulse 2s infinite;
+  animation: wavePulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 .banner-main-title h1 {
@@ -86,4 +90,49 @@
 //Circle Logo in Banner
 .circle-logo-area {
   padding-top: 60px;
+}
+
+// Animation for the banner
+.banner-half-moon3{
+  animation-delay: 1.25s;
+  animation-duration: 5s;
+  animation-name: slidein;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.banner-half-moon2{
+  animation-delay: 1s;
+  animation-duration: 5s;
+  animation-name: slidein;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.banner-half-moon1{
+  animation-delay: 0.5s;
+  animation-duration: 5s;
+  animation-name: slidein;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.banner-half-moon0{
+  animation-delay: 0.25s;
+  animation-duration: 5s;
+  animation-name: slidein;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes slidein {
+  from {
+    translate: 150vw 0;
+    scale: 200% 1;
+  }
+
+  to {
+    translate: 0 0;
+    scale: 100% 1;
+  }
 }

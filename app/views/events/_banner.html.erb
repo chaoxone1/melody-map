@@ -1,15 +1,15 @@
 <div class="content">
-  <%# Star-sign %>
+  <!-- pulsating star sign -->
   <div class="banner-stararea">
     <div class="starsign">
       <%= image_tag "star.svg" %>
     </div>
   </div>
-  <%# Main Banner  %>
+  <!-- Main Banner -->
   <div class="banner-main-title">
     <h1>Wherever Music Takes You, Find It Here</h1>
   </div>
-<%# Subbanner text  %>
+<!-- Sub-banner text -->
   <div class="banner-subtext">This is the place, where you will find your next event. The Music you love.The event you ever wanted to go. The place to follow the right people. <p> Welcome to Melody Map. Follow your rhythm.</p></div>
 
 
@@ -24,6 +24,13 @@
       </div>
     <% end %>
   </div>
-  <div class="circle-logo-area"> <%= image_tag "banner-circles.svg" %></div>
-    <%# End of content %>
+  <!-- Circle Logo -->
+  <div class="circle-logo-area">
+    <%= image_tag "circle-single.svg", class: "banner-circle1"%>
+    <%= image_tag "half-moon-single.svg", class: "banner-half-moon0" %>
+    <%= image_tag "half-moon-single.svg", class: "banner-half-moon1" %>
+    <%= image_tag "half-moon-single.svg", class: "banner-half-moon2" %>
+    <%= image_tag "half-moon-single.svg", class: "banner-half-moon3" %>
+  </div>
+    <!-- End of content -->
 </div>
