@@ -4,7 +4,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.where('date >= ?', Date.today.beginning_of_day)
-    @most_bookmarked = Event.all
+    @most_bookmarked = Event.where('date >= ?', Date.today.beginning_of_day)
     if params[:query].present?
       @events = Event.search_by_name_and_category(params[:query])
     elsif params[:category].present?
@@ -18,7 +18,7 @@ class EventsController < ApplicationController
 
     case params[:view]
     when 'all'
-
+      # @events = Event.where('date >= ?', Date.today.beginning_of_day)
     when 'today'
       @events = @events.where(date: Date.today.beginning_of_day..Date.today.end_of_day)
     when 'week'
@@ -126,7 +126,6 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:name, :date, :location, :description, :category, :photo)
-
   end
 
   def set_event

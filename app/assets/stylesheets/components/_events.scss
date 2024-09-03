@@ -80,3 +80,8 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+
+.active {
+  background-color: lighten($call-to-action, 10%);
+  color: $background-color;
+}
