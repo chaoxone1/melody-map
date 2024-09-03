@@ -101,6 +101,7 @@ class EventsController < ApplicationController
 
   def my_events
     @events = current_user.events
+    if params[:query].present?
   end
 
   def bookmark
@@ -115,7 +116,7 @@ class EventsController < ApplicationController
     .order('COUNT(follows.following_id) DESC')
     .limit(3)
   end
-  
+
   def user_params
     params.require(:user).permit(:email, :address, :photo, :username, :radius, :password, :password_confirmation, :current_password, categories: [])
   end
