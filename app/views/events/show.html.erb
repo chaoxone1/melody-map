@@ -62,7 +62,10 @@
           <div class="d-flex">
             <div class="d-flex">
               <% if @event.user.photo.attached? %>
-                <%= cl_image_tag @event.user.photo.key, style:"border-radius: 100%; height: 4rem; width: 4rem; margin-bottom: 0.8rem" %>
+                <%= cl_image_tag @event.user.photo.key,
+                style:"display: block; object-fit: cover; border-radius: 50%",
+                width: "90px",
+                height: "90px" %>
               <% else %>
                 <span class="avatar-initials"><%= @event.user.username.first(2).upcase %></span>
               <% end %>

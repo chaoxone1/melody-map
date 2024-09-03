@@ -238,7 +238,7 @@ events << Event.create!(
   description: 'A lively ska concert in the heart of Berlin.',
   location: 'SO36, Oranienstraße 190, 10999 Berlin, Germany',
   user: users[3],
-  category: 'Rock',
+  category: 'Country',
   latitude: 52.5006,
   longitude: 13.4200
 ).tap do |event|
