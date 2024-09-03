@@ -1,0 +1,27 @@
+.btn-updated{
+  display: inline-block;
+  background-color: #f4c0e8;
+  color: #1D1D1D;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  border: 1px solid #B1B1B1;
+  text-transform: uppercase;
+}
+.btn-updated:hover{
+  background-color: black;
+  color: white;
+  transition: background-color 0.3s, color 0.3s;
+  padding: 10px 20px;
+}
+
+.btn-updated:focus {
+  outline: none;
+}
+
+.btn-updated:active {
+  background-color: #ff5099;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
+}
