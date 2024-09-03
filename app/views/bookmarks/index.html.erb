@@ -14,7 +14,7 @@
                   <p class="event-category"><%= favorite.favoritable.category %></p>
                   <a href="<%= event_path(favorite.favoritable) %>" class="event-title"><%= favorite.favoritable.name %></a>
                   <p class="event-location"><%= favorite.favoritable.location %></p>
-                  <p class="event-date"><%= favorite.favoritable.date %></p>
+                  <p class="event-date"><%= favorite.favoritable.date.strftime("%B %d, %Y %I:%M %p") %></p>
                   <p class="event-bookmarks">
                     <i class="fa-regular fa-bookmark" style="color: black; font-size: 1rem;"></i>
                     <strong><%= favorite.favoritable.favorited.count %></strong>
@@ -42,7 +42,7 @@
                   <p class="event-category"><%= favorite.favoritable.category %></p>
                   <a href="<%= event_path(favorite.favoritable) %>" class="event-title"><%= favorite.favoritable.name %></a>
                   <p class="event-location">Location: <%= favorite.favoritable.location %></p>
-                  <p class="event-date">Date: <%= favorite.favoritable.date %></p>
+                  <p class="event-date">Date: <%= favorite.favoritable.date.strftime("%B %d, %Y %I:%M %p") %></p>
                   <p class="event-bookmarks">
                     <i class="fa-regular fa-bookmark" style="color: black; font-size: 1rem;"></i>
                     <strong><%= favorite.favoritable.favorited.count %></strong>
