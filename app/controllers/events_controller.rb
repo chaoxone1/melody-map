@@ -9,7 +9,7 @@ class EventsController < ApplicationController
       @events = Event.search_by_name_and_category(params[:query])
     elsif params[:category].present?
       if params[:category] == 'For You'
-        preferred_categories = current_user.categories
+        preferred_categories = current_user.categories.split(',')
         @events = @events.where(category: preferred_categories)
       else
         @events = @events.where(category: params[:category])
@@ -115,7 +115,7 @@ class EventsController < ApplicationController
     .order('COUNT(follows.following_id) DESC')
     .limit(3)
   end
-  
+
   def user_params
     params.require(:user).permit(:email, :address, :photo, :username, :radius, :password, :password_confirmation, :current_password, categories: [])
   end
