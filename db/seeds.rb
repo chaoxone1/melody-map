@@ -19,7 +19,7 @@ users << User.create!(
   longitude: 13.4050
 )
 # .tap do |user|
-#   user.photo.attach(io: URI.open("https://res.cloudinary.com/doxvqzbhi/image/upload/v1724947177/production/5eevp6xn6po4d5xcz8xeke70n6yd.jpg"), filename: '5eevp6xn6po4d5xcz8xeke70n6yd.jpg')
+#   user.photo.attach(io: URI.open("https://res.cloudinary.com/doxvqzbhi/image/upload/v1724947177/production/5eevp6xn6po4d5xcz8xeke70n6yd.jpg"), filename: 'up4qrhcbc7qyvaxck38n0ljs1o2n.jpg')
 # end
 
 users << User.create!(
@@ -89,7 +89,9 @@ users << User.create!(
   radius: 40,
   latitude: 53.5503,
   longitude: 10.0007
-)
+).tap do |user|
+  user.photo.attach(io: URI.open("https://res.cloudinary.com/doxvqzbhi/image/upload/taylor_ysb36q.jpg"), filename: 'taylor_ysb36q.jpg')
+end
 
 users << User.create!(
   email: 'max.mustermann@gmail.com',
@@ -115,7 +117,9 @@ users << User.create!(
   radius: 50,
   latitude: 48.1371,
   longitude: 11.5754
-)
+).tap do |user|
+  user.photo.attach(io: URI.open("https://res.cloudinary.com/doxvqzbhi/image/upload/adele_ks3evc.jpg"), filename: 'adele_ks3evc.jpg')
+end
 
 users << User.create!(
   email: 'tom.schneider@gmail.com',
@@ -127,7 +131,9 @@ users << User.create!(
   radius: 45,
   latitude: 48.1371,
   longitude: 11.5754
-)
+).tap do |user|
+  user.photo.attach(io: URI.open("https://res.cloudinary.com/doxvqzbhi/image/upload/The_Rock_2023_wu6le4.jpg"), filename: 'The_Rock_2023_wu6le4.jpg')
+end
 
 # Create Events - All in Germany
 events = []
@@ -141,6 +147,21 @@ events << Event.create!(
   category: 'Rock',
   latitude: 52.5145,
   longitude: 13.2394
+).tap do |event|
+  event.photo.attach(io: URI.open("https://res.cloudinary.com/doxvqzbhi/image/upload/v1725022253/Rocks_aeofrc.jpg"), filename: 'Rocks_aeofrc.jpg')
+end
+
+events << Event.create!(
+  name: 'Rammstein Concert',
+  date: Date.new(2024, 9, 7),
+  description: 'Get ready for an electrifying night as Rammstein brings their legendary live performance to Hannover! Known for their intense energy, pyrotechnics, and theatrical stage presence, Rammstein is set to deliver a concert experience like no other. Fans can expect a setlist packed with the bands iconic hits, from Du Hast to Sonne, as well as new material that pushes the boundaries of industrial metal.
+
+The Hannover show will take place at Hannover Halle, a perfect backdrop for Rammsteins explosive performance. The combination of pounding rhythms, powerful vocals, and a visually stunning production promises an unforgettable evening. Whether you are a longtime fan or new to their music, Rammsteins concert is an event not to be missed. Prepare for a night filled with adrenaline, fire, and the raw power that only Rammstein can deliver!',
+  location: 'Hannover Congress Centrum, Germany',
+  user: users[0],
+  category: 'Rock',
+  latitude: 52.3759,
+  longitude: 9.7320
 ).tap do |event|
   event.photo.attach(io: URI.open("https://res.cloudinary.com/doxvqzbhi/image/upload/v1725022253/Rocks_aeofrc.jpg"), filename: 'Rocks_aeofrc.jpg')
 end
@@ -160,7 +181,7 @@ end
 
 events << Event.create!(
   name: 'Munich Pop Open Air',
-  date: Date.new(2024, 8, 25),
+  date: Date.new(2024, 9, 6),
   description: 'An open-air pop concert in the heart of Munich.',
   location: 'Königsplatz, 80333 Munich, Germany',
   user: users[3],
@@ -213,7 +234,7 @@ end
 
 events << Event.create!(
   name: 'Berlin Country Night',
-  date: Date.new(2024, 9, 25),
+  date: Date.new(2024, 9, 6),
   description: 'A lively ska concert in the heart of Berlin.',
   location: 'SO36, Oranienstraße 190, 10999 Berlin, Germany',
   user: users[3],
