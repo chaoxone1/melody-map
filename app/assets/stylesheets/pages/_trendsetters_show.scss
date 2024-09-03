@@ -1,5 +1,4 @@
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f5f5f5;
@@ -77,16 +76,16 @@ body {
 }
 
 .like-heart i {
-  color: red; /* Red color for the filled heart */
+  color: red;
 }
 
 .like-heart-missing i {
-  color: black; /* Black color for the empty heart */
+  color: black;
 }
 
 .like-heart:hover i,
 .like-heart-missing:hover i {
-  color: darkred; /* Darker red or black when hovering */
+  color: darkred;
 }
 
 .events-section {
