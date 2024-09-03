@@ -1,0 +1,5 @@
+# config/meta.yml
+meta_product_name: "Melody Map"
+meta_title: "Wherever Music Takes You, Find It Here"
+meta_description: "Discover music events tailored to your tastes with Melody-Map. Explore concerts, festivals, and live music in your area, bookmark your favorite events, and follow like-minded music lovers. Your personalized guide to unforgettable music experiences."
+meta_image: "cover.png" # should exist in `app/assets/images/`
