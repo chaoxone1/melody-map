@@ -1,0 +1,28 @@
+.back-button {
+  display: flex;
+  align-items: center;
+
+  justify-content: center;
+  width: 80px;
+  height: 40px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  top: 10%;
+  left: 50px;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  margin-left: 50px;
+}
+
+.back-button::before {
+  content: "← ";
+  font-size: 16px;
+  color: #fff;
+}
+
+.back-button:hover {
+  background-color: #333;
+}

@@ -15,6 +15,7 @@
   <body style="background-color: white;">
   <%= render "shared/navbar" %>
   <%= render "shared/flashes" %>
+  <%= link_to "Back", request.referer || root_path, class: "btn btn-secondary back-button" %>
     <%= yield %>
       <%= render 'shared/footer' %>
   </body>
