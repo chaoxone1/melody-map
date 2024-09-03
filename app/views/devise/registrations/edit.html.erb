@@ -24,7 +24,7 @@
   <div class="checkbox-group">
     <% ['Pop', 'Rock', 'Hip-Hop', 'Electronic', 'Country', 'Classic'].each do |category| %>
       <div class="form-check">
-        <%= check_box_tag "user[categories_list][]", category, current_user.categories.include?(category), class: "form-check-input" %>
+        <%= check_box_tag "user[categories_list][]", category, current_user.categories ? current_user.categories.include?(category) : false, class: "form-check-input" %>
         <%= label_tag "user_categories_#{category}", category, class: "form-check-label" %>
       </div>
     <% end %>

@@ -26,7 +26,7 @@ class User < ApplicationRecord
   def categories_list=(value)
     self.categories = value.reject(&:blank?).join(",")
   end
-  
+
   def following?(other_user)
     return false if other_user.nil?
     following_relationships.exists?(following_id: other_user.id)
