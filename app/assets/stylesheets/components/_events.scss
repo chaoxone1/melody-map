@@ -82,6 +82,8 @@ body {
 }
 
 .active {
-  background-color: lighten($call-to-action, 10%);
+  background-color: white($call-to-action, 10%);
   color: $background-color;
+  text-decoration: none;
+  font-weight: bold;
 }
