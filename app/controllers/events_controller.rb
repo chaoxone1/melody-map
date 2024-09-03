@@ -113,9 +113,9 @@ class EventsController < ApplicationController
     @trendsetters = User.left_joins(:follows)
     .group('users.id')
     .order('COUNT(follows.following_id) DESC')
-    .limit(3)
+    .limit(4)
   end
-  
+
   def user_params
     params.require(:user).permit(:email, :address, :photo, :username, :radius, :password, :password_confirmation, :current_password, categories: [])
   end
