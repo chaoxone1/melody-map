@@ -26,8 +26,8 @@
               data: { bs_toggle: "dropdown" },
               'aria-haspopup': true,
               'aria-expanded': false,
-              width: "40",
-              height: "40",
+              width: "60px",
+              height: "60px",
               style: "display: block" %>
             <% else %>
               <%= image_tag 'unknown-user.jpeg',
@@ -41,7 +41,9 @@
             <% end  %>
           </div>
           <div class="trendsetter-index-name smalltitle">
+            <%= link_to trendsetter_path(user), style: 'text-decoration: none;' do %>
             <%= user.username %>
+            <% end %>
           </div>
           <!-- Follower amount section-->
           <div class="follower-amount">

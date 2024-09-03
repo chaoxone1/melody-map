@@ -15,7 +15,6 @@ $body-text-font-size: 16px;
 // Body and Background
 body {
   background-color: $light-gray;
-  font-family: 'Arial', sans-serif;
   color: $header-text-color;
 }
 
@@ -80,4 +79,20 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+// Profile Picture Styles
+.edit-profile-container {
+  display: flex;
+  align-items: flex-start; /* Align the content to the top */
+}
+
+.edit-profile-picture {
+  margin-right: 30px; /* Adds space between the picture and the content */
+}
+
+.profile-picture {
+  width: 100px; /* Smaller size for the profile picture */
+  height: 100px;
+  border-radius: 50%; /* Circular shape */
+  object-fit: cover;
 }

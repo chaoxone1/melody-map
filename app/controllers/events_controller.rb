@@ -3,13 +3,13 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
 
   def index
-    @events = Event.all
+    @events = Event.where('date >= ?', Date.today.beginning_of_day)
     @most_bookmarked = Event.all
     if params[:query].present?
       @events = Event.search_by_name_and_category(params[:query])
     elsif params[:category].present?
       if params[:category] == 'For You'
-        preferred_categories = current_user.categories
+        preferred_categories = current_user.categories.split(',')
         @events = @events.where(category: preferred_categories)
       else
         @events = @events.where(category: params[:category])
@@ -101,6 +101,8 @@ class EventsController < ApplicationController
 
   def my_events
     @events = current_user.events
+    if params[:query].present?
+    end
   end
 
   def bookmark
@@ -113,9 +115,9 @@ class EventsController < ApplicationController
     @trendsetters = User.left_joins(:follows)
     .group('users.id')
     .order('COUNT(follows.following_id) DESC')
-    .limit(3)
+    .limit(4)
   end
-  
+
   def user_params
     params.require(:user).permit(:email, :address, :photo, :username, :radius, :password, :password_confirmation, :current_password, categories: [])
   end

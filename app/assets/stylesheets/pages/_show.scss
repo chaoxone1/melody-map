@@ -1,5 +1,4 @@
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -34,6 +33,7 @@ body {
 .image-map-container {
   display: flex;
   width: 100%;
+  height: auto;
 }
 
 .image-card {
@@ -50,6 +50,7 @@ body {
   width: 45%;
   height: auto;
   margin-left: 20px;
+  margin-bottom: 20px;
   background-color: #e0e0e0;
   border-radius: 8px;
   position: sticky;
@@ -119,4 +120,28 @@ body {
   text-decoration: none;
   transition: background-color 0.3s, color 0.3s;
   outline: none;
+}
+
+
+/* Style for the heart icon (follow/unfollow) */
+.like-heart,
+.like-heart-missing {
+  font-size: 24px;
+  color: #000;
+  transition: color 0.3s;
+  cursor: pointer;
+  text-decoration: none; /* Remove underline */
+}
+
+.like-heart i {
+  color: red; /* Red color for the filled heart */
+}
+
+.like-heart-missing i {
+  color: black; /* Black color for the empty heart */
+}
+
+.like-heart:hover i,
+.like-heart-missing:hover i {
+  color: darkred; /* Darker red or black when hovering */
 }
