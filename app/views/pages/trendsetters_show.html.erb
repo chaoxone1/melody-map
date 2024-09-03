@@ -7,7 +7,9 @@
     <div class="avatar-container">
       <div class="avatar">
             <% if @trendsetter.photo.attached? %>
-              <%= cl_image_tag @trendsetter.photo.key, class: "avatar" %>
+              <%= cl_image_tag @trendsetter.photo.key,
+              class: "avatar",
+              style: "display: block; object-fit: cover; border-radius: 50%;" %>
             <% else %>
               <span class="avatar-initials"><%= @trendsetter.username.first(2).upcase %></span>
             <% end %>
