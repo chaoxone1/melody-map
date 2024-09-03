@@ -8,10 +8,12 @@
       <%= render 'banner' %>
 
       </div>
+    <%= turbo_frame_tag :event do %>
+      <div class="pick-for-you">
+        <%= render 'pick-for-you', events: @events %>
+      </div>
+    <% end %>
 
-    <div class="pick-for-you">
-      <%= render 'pick-for-you' %>
-    </div>
     <div class="trendsetter-index">
       <%= render 'trendsetters-index' %>
     </div>
