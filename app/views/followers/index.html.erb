@@ -1,48 +1,65 @@
-<% if @followers.any? %>
 <div class="content-table">
 
-<div class="followers-table">
-  <h1>People I'm following <%= @following.count %></h1>
-<table class="table">
-  <caption></caption>
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Username</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <% @following.each_with_index do |follower, index| %>
-      <th scope="row"><%= index+1 %></th>
-      <td><%= follower.username %></td>
-    </tr>
+  <!-- Following Table -->
+  <div class="following-table">
+    <h1>People I'm Following: <%= @following.count %></h1>
+    <% if @following.any? %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Avatar</th>
+            <th scope="col">Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @following.each do |following| %>
+            <tr>
+              <td class="avatar-cell">
+                <% if following.photo.attached? %>
+                  <%= cl_image_tag following.photo.key, class: "avatar-small" %>
+                <% else %>
+                  <span class="avatar-initials"><%= following.username.first(2).upcase %></span>
+                <% end %>
+              </td>
+              <td><%= following.username %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p>You are not following anyone yet.</p>
     <% end %>
-  </tbody>
-</table>
-</div>
+  </div>
 
-<div class="following-table">
-  <h1>My followers <%= @followers.count %></h1>
-<table class="table">
-  <caption></caption>
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Username</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <% @followers.each_with_index do |follower, index| %>
-      <th scope="row"><%= index+1 %></th>
-      <td><%= follower.username %></td>
-    </tr>
+  <!-- Followers Table -->
+  <div class="followers-table">
+    <h1>My Followers: <%= @followers.count %></h1>
+    <% if @followers.any? %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Avatar</th>
+            <th scope="col">Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @followers.each_with_index do |follower, index| %>
+            <tr>
+              <td class="avatar-cell">
+                <% if follower.photo.attached? %>
+                  <%= cl_image_tag follower.photo.key, class: "avatar-small" %>
+                <% else %>
+                  <span class="avatar-initials"><%= follower.username.first(2).upcase %></span>
+                <% end %>
+              </td>
+              <td><%= follower.username %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p>You have no followers yet.</p>
     <% end %>
-  </tbody>
-</table>
+  </div>
+
 </div>
-</div>
-<% else %>
-  <p>You have no followers yet.</p>
-<% end %>

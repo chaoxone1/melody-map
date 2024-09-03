@@ -1,4 +1,96 @@
+/* Style the tables container */
 .content-table {
-display: flex;
-justify-content: space-evenly;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Individual table styling */
+.followers-table, .following-table {
+  flex: 1;
+  min-width: 300px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.followers-table h1, .following-table h1 {
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Table styling */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table thead {
+  background-color: #f4f4f4;
+}
+
+.table th, .table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.table th {
+  font-weight: bold;
+  color: #555;
+}
+
+/* Avatar column styling */
+.avatar-cell {
+  width: 50px;
+  text-align: center;
+}
+
+.avatar-small {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Default avatar initials style */
+.avatar-initials {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ffd966;
+  color: #333;
+  font-size: 18px;
+  line-height: 40px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Hover effect for table cards */
+.followers-table:hover, .following-table:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background-color: pink;
+}
+
+/* Responsive design: stack tables vertically on small screens */
+@media (max-width: 768px) {
+  .content-table {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .followers-table, .following-table {
+    width: 100%;
+  }
 }
