@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
 
   def index
-    @events = Event.all
+    @events = Event.where('date >= ?', Date.today.beginning_of_day)
     @most_bookmarked = Event.all
     if params[:query].present?
       @events = Event.search_by_name_and_category(params[:query])
