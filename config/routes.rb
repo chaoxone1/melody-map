@@ -37,4 +37,5 @@ Rails.application.routes.draw do
   get 'my_created_events', to: 'pages#created_events'
   post 'followers/:id', to: 'followers#create'
   delete 'followers/:id', to: 'followers#destroy'
+  get '/404', to: 'errors#not_found'
 end
