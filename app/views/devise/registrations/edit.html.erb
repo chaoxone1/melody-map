@@ -1,7 +1,9 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
-<% if current_user.photo.key.present? %>
-  <%= cl_image_tag current_user.photo.key %>
 
+<% if current_user.photo.key.present? %>
+  <div class="text-center">
+    <%= cl_image_tag current_user.photo.key, class: "profile-picture" %>
+  </div>
 <% end %>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -11,25 +13,27 @@
     <%= f.input :email, required: true, autofocus: true %>
     <%= f.input :address, required: true,
         input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
-        wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
-%>
-  current address: <%= current_user.address %>
-  <div class="form-group">
-    <%= f.input :photo, as: :file %>
-  </div>
+        wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
+    current address: <%= current_user.address %>
+
+    <div class="form-group">
+      <%= f.input :photo, as: :file, label: "Upload new profile picture", input_html: { class: "form-control" } %>
+    </div>
+
     <%= f.input :username, required: true %>
+
     <!-- Updated categories -->
-   <div class="form-group">
-  <%= f.label :categories, "Categories", class: "form-label string required" %>
-  <div class="checkbox-group">
-    <% ['Pop', 'Rock', 'Hip-Hop', 'Electronic', 'Country', 'Classic'].each do |category| %>
-      <div class="form-check">
-        <%= check_box_tag "user[categories_list][]", category, current_user.categories ? current_user.categories.include?(category) : false, class: "form-check-input" %>
-        <%= label_tag "user_categories_#{category}", category, class: "form-check-label" %>
+    <div class="form-group">
+      <%= f.label :categories, "Categories", class: "form-label string required" %>
+      <div class="checkbox-group">
+        <% ['Pop', 'Rock', 'Hip-Hop', 'Electronic', 'Country', 'Classic'].each do |category| %>
+          <div class="form-check">
+            <%= check_box_tag "user[categories_list][]", category, current_user.categories ? current_user.categories.include?(category) : false, class: "form-check-input" %>
+            <%= label_tag "user_categories_#{category}", category, class: "form-check-label" %>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
-</div>
+    </div>
 
     <%= f.input :radius, required: true %>
 
@@ -38,25 +42,25 @@
     <% end %>
 
     <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
+                hint: "Leave it blank if you don't want to change it",
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
+                hint: "We need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "Update", class: "btn btn-primary" %>
   </div>
 <% end %>
 
 <h3>Cancel my account</h3>
 
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %></div>
 
-<%= link_to "Back", :back %>
+<%= link_to "Back", :back, class: "btn btn-secondary" %>
