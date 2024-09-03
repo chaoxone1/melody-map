@@ -6,7 +6,7 @@
     <button class="event-nav-button" data-action="click->hover-cards#showPast">Past events</button>
   </div>
 
-  <div id="upcoming-events" class="events-grid" data-hover-cards-target="upcoming">
+  <div id="upcoming-events" class="events-grid active-section" data-hover-cards-target="upcoming">
     <% @events.where('date >= ?', Date.today).each do |event| %>
       <div class="event-card">
         <h3><%= link_to event.name, event_path(event.id), style:"text-decoration: none; color: black" %></h3>
