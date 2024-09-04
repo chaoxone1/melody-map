@@ -12,7 +12,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body style="background-color: white;">
+  <body style="background-color: white;" data-current-user-id="<%= current_user ? current_user.id : "" %>">
   <%= render "shared/navbar" %>
   <%= render "shared/flashes" %>
   <%= link_to "Back", request.referer || root_path, class: "btn btn-secondary back-button" %>
