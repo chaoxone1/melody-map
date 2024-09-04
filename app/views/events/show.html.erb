@@ -98,11 +98,7 @@
   <% if current_user %>
     <div class="card creator-card">
       <div class="container chat">
-        <% if current_user != @event.user %>
-          <h2>Need more info? Chat directly with <%= @event.user.username %></h2>
-        <% else %>
-          <h2>history chat</h2>
-        <% end %>
+        <h2>Melody-Blog for: <%= @event.name %></h2>
         <%= turbo_stream_from "event_#{@event.id}_messages" %>
         <div id="messages" class="messages">
           <% @event.messages.each do |message| %>
