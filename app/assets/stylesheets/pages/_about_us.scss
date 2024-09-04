@@ -65,9 +65,17 @@ body {
 
 .team-section .team-members {
   display: flex;
-  gap: 30px;
-  justify-content: space-around;
+  justify-content: space-between; /* Evenly space team members */
+  gap: 30px; /* Add space between team members */
   margin-top: 20px;
+}
+
+.team-members.row-of-3 .team-member {
+  flex: 1; /* Each team member in the row of 3 takes up equal space */
+}
+
+.team-members.row-of-2 {
+  justify-content: space-around; /* Center the two team members in the row of 2 */
 }
 
 .team-member {
