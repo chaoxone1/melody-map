@@ -50,6 +50,8 @@ class EventsController < ApplicationController
       lng: @event.longitude,
       info_window_html: render_to_string(partial: "info_window", locals: { event: @event }),
     }]
+    @message = Message.new
+    @message.user = current_user
   end
 
   def new

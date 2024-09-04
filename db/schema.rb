@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_02_091407) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_04_072929) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -83,11 +83,30 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_02_091407) do
     t.index ["scope"], name: "index_favorites_on_scope"
   end
 
+  create_table "followers", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "following_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["following_id"], name: "index_followers_on_following_id"
+    t.index ["user_id"], name: "index_followers_on_user_id"
+  end
+
   create_table "follows", force: :cascade do |t|
     t.integer "user_id"
     t.integer "following_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_messages_on_event_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -114,4 +133,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_02_091407) do
   add_foreign_key "bookmarks", "events"
   add_foreign_key "bookmarks", "users"
   add_foreign_key "events", "users"
+  add_foreign_key "followers", "users"
+  add_foreign_key "followers", "users", column: "following_id"
+  add_foreign_key "messages", "events"
+  add_foreign_key "messages", "users"
 end

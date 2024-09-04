@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       post 'favorite', to: 'events#favorite'
       delete 'unfavorite', to: 'events#unfavorite'
     end
+    resources :messages, only: [:create]
   end
 
   resources :creators do
