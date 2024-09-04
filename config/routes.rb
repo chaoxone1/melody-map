@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :bookmarks, only: [:index, :create, :destroy]
   resources :followers, only: [:index, :create, :destroy]
+  resources :notifications
 
   get "trendsetters", to: "pages#trendsetters_index"
   get "trendsetters/:id", to: "pages#trendsetters_show", as: :trendsetter
@@ -39,4 +40,5 @@ Rails.application.routes.draw do
   post 'followers/:id', to: 'followers#create'
   delete 'followers/:id', to: 'followers#destroy'
   get '/404', to: 'errors#not_found'
+  get 'notifications', to: 'notifications#index'
 end

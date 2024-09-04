@@ -16,10 +16,28 @@
       <%= link_to "+ CREATE EVENT",  new_event_path, style: "text-decoration: none; color: black; margin-right: 4rem; margin-top: 0.5rem;" %>
     </div>
 
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-top:0.5rem">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
+      <!-- Notification -->
+<div id="notifications">
+  <%= link_to notifications_path, class: 'notification-icon' do %>
+    <div class="bell-container">
+      <span class="bell">
+        <div class="navbar-bell-container">
+          <div class="navbar-bell-button">
+            <i class="fa-solid fa-bell"></i>
+            <% if current_user.active_notifications.any? %>
+              <span class="button__badge"><%= current_user.active_notifications.count %></span>
+            <% end %>
+          </div>
+        </div>
+      </span>
+    </div>
+  <% end %>
+</div>
+
+        <!-- /Notification -->
           <li class="nav-item my-auto" >
             <p class="nav-link my-auto username"><%= current_user.username %></p>
           </li>

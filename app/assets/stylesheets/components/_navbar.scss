@@ -33,12 +33,52 @@ i {
 }
 
 .username {
-  color:#000000;
-text-align:center;
-vertical-align:text-top;
-font-size:16px;
-line-height:auto;
-border-style:hidden;
-outline:none;
-padding-right: 1rem;
+  color: #000000;
+  text-align: center;
+  vertical-align: text-top;
+  font-size: 16px;
+  line-height: auto;
+  border-style: hidden;
+  outline: none;
+  padding-right: 10px;
+}
+
+.fa-bell {
+  color: #000000;
+  text-align: center;
+  vertical-align: middle;
+  position: relative; /* Added this to allow badge positioning */
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}
+
+.button__badge {
+  background-color: #fa3e3e;
+  border-radius: 50%; /* Adjusted to make it round */
+  color: white;
+  padding: 2px 5px;
+  font-size: 10px;
+  position: absolute;
+  top: -5px; /* Adjust this value to fine-tune the vertical position */
+  right: -10px; /* Adjust this value to fine-tune the horizontal position */
+  text-decoration: none; /* Remove underline */
+}
+
+.navbar-bell-container {
+  background-color: white;
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+  padding-right: 10px;
+}
+
+.navbar-bell-button {
+  background-color: white;
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+  position: relative; /* To allow positioning of the badge */
 }
