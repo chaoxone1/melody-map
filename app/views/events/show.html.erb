@@ -76,7 +76,8 @@
             </div>
           </div>
           <div>
-            <% if current_user %>
+           <%= turbo_frame_tag :follow_btn do %>
+             <% if current_user %>
               <%= link_to "Details", trendsetter_path(@event.user), class: "details-button", style: "display:block; margin-bottom:1rem;" %>
 
               <% if current_user.following?(@event.user) %>
@@ -88,6 +89,7 @@
                   <i class="far fa-heart"></i>
                 <% end %>
               <% end %>
+            <% end %>
             <% end %>
           </div>
         </div>

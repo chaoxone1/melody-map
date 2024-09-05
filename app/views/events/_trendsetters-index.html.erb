@@ -41,7 +41,7 @@
             <% end  %>
           </div>
           <div class="trendsetter-index-name smalltitle">
-            <%= link_to trendsetter_path(user), style: 'text-decoration: none;' do %>
+            <%= link_to trendsetter_path(user), data: {turbo: false }, style: 'text-decoration: none;' do %>
             <%= user.username %>
             <% end %>
           </div>
@@ -51,17 +51,9 @@
           </div>
           <!-- Follow Button -->
           <div class="trendsetters-follow-button">
-            <% if user_signed_in? %>
-              <% if current_user.following?(user) %>
-                <%= link_to follower_path(user), data: { turbo_method: "DELETE" }, class: 'like-heart' do %>
-                  <i class="fas fa-heart"></i>
-                <% end %>
-              <% else %>
-                <%= link_to follower_path(user), data: { turbo_method: "POST" }, class: 'like-heart-missing' do %>
-                <i class="far fa-heart"></i>
-                <% end %>
-              <% end %>
-            <% end %>
+          <%= turbo_frame_tag :follower do %>
+            <%= render "followers/follow", user: user %>
+          <% end %>
           </div>
           </div>
       <% end  %>
