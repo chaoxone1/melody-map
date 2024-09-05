@@ -76,7 +76,7 @@ class EventsController < ApplicationController
     if @event.update(event_params)
       redirect_to @event, notice: 'Event was successfully updated.'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -118,10 +118,6 @@ class EventsController < ApplicationController
     .group('users.id')
     .order('COUNT(follows.following_id) DESC')
     .limit(4)
-  end
-
-  def user_params
-    params.require(:user).permit(:email, :address, :photo, :username, :radius, :password, :password_confirmation, :current_password, categories: [])
   end
 
   private
