@@ -208,6 +208,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
+    noticed (2.4.1)
+      rails (>= 6.1.0)
     orm_adapter (0.5.0)
     pg (1.5.7)
     pg_search (2.3.7)
@@ -343,6 +345,7 @@ DEPENDENCIES
   geocoder
   importmap-rails (~> 1.2.3)
   jbuilder
+  noticed (~> 2.4)
   pg (~> 1.1)
   pg_search
   puma (>= 5.0)

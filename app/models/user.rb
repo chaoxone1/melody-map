@@ -19,8 +19,9 @@ class User < ApplicationRecord
   has_many :following, through: :following_relationships, source: :following
 
   #Notifications
-  has_many :notifications, foreign_key: :recipient_id
-  has_many :active_notifications, -> { where(read_at: nil) }, class_name: 'Notification', foreign_key: :recipient_id
+  # has_many :notifications, foreign_key: :recipient_id
+  # has_many :active_notifications, -> { where(read_at: nil) }, class_name: 'Notification', foreign_key: :recipient_id
+  has_many :notifications, as: :recipient, dependent: :destroy, class_name: "Noticed::Notification"
 
   def categories_list
     categories.present? ? categories.split(",") : []

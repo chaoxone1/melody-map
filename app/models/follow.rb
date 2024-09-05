@@ -6,9 +6,12 @@ class Follow < ApplicationRecord
 
   after_create_commit :notify_user
 
+  has_many :noticed_events, as: :record, dependent: :destroy, class_name: "Noticed::Event"
+  has_many :notifications, through: :noticed_events, class_name: "Noticed::Notification"
+
   private
 
   def notify_user
-    Notification.create(user: follower, recipient: following, notification_type: 'follow')
+    FollowNotifier.with(record: self, recipient: following, message: "New post").deliver(following)
   end
 end
