@@ -20,22 +20,26 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
       <!-- Notification -->
-<div id="notifications">
-  <%= link_to notifications_path, class: 'notification-icon' do %>
-    <div class="bell-container">
-      <span class="bell">
-        <div class="navbar-bell-container">
-          <div class="navbar-bell-button">
-            <i class="fa-solid fa-bell"></i>
-            <% if current_user.active_notifications.any? %>
-              <span class="button__badge"><%= current_user.active_notifications.count %></span>
-            <% end %>
+      <div id="notifications">
+        <%= link_to notifications_path, class: 'notification-icon' do %>
+          <div class="bell-container">
+            <span class="bell">
+              <div class="navbar-bell-container">
+                <div class="navbar-bell-button">
+                  <i class="fa-solid fa-bell">
+                  <%= turbo_stream_from "notification_#{current_user.id}" %>
+                  <%= turbo_frame_tag "notification_count" do %>
+                    <% if current_user.notifications.unread.any? %>
+                      <%= render "shared/notification", user: current_user %>
+                    <% end %>
+                    <% end %>
+                    </i>
+                </div>
+              </div>
+            </span>
           </div>
-        </div>
-      </span>
-    </div>
-  <% end %>
-</div>
+        <% end %>
+      </div>
 
         <!-- /Notification -->
           <li class="nav-item my-auto" >

@@ -84,3 +84,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "noticed", "~> 2.4"

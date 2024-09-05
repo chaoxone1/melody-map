@@ -7,7 +7,14 @@
         <div class="avatar-container-index">
           <div class="avatar">
             <% if user.photo.attached? %>
-              <%= cl_image_tag user.photo.key, class: "avatar" %>
+              <%= cl_image_tag user.photo.key, class: "avatar dropdown-toggle",
+              id: "navbarDropdown",
+              data: { bs_toggle: "dropdown" },
+              'aria-haspopup': true,
+              'aria-expanded': false,
+              width: "60px",
+              height: "60px",
+              style: "display: block; object-fit: cover; border-radius: 50%;" %>
             <% else %>
               <span class="avatar-initials"><%= user.email.first(2).upcase %></span>
             <% end %>

@@ -1,14 +1,21 @@
 <h1>Notifications</h1>
 <% @notifications.each do |notification| %>
 <div class="notification">
-  <% if notification.user.photo.attached? %>
-    <%= cl_image_tag notification.user.photo.key, class:"avatar-large" %>
+  <% if notification.record.follower.photo.attached? %>
+    <%= cl_image_tag notification.record.follower.photo.key, class: "avatar dropdown-toggle",
+              id: "navbarDropdown",
+              data: { bs_toggle: "dropdown" },
+              'aria-haspopup': true,
+              'aria-expanded': false,
+              width: "40",
+              height: "40",
+              style: "display: block; object-fit: cover; border-radius: 50%;"%>
   <% else %>
     <%= image_tag "unknown-user.jpeg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
   <% end  %>
   <div class="notification-content">
-    <p><small><%= notification.created_at.strftime("%B %d, %Y") %></small></p>
-    <p><strong><%= notification.user.username%></strong> started following you</p>
+    <p><small><%= notification.record.follower.created_at.strftime("%B %d, %Y") %></small></p>
+    <p><strong><%= notification.record.follower.username%></strong> started following you</p>
   </div>
 </div>
 <% end %>
