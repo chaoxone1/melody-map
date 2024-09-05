@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   # Custom validation
   validates :username, presence: true
+  validates :categories, presence: true
   # Self-referential associations
   has_many :follows
   has_many :follower_relationships, foreign_key: :following_id, class_name: 'Follow'
