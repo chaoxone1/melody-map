@@ -7,6 +7,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # Custom validation
+  validates :username, presence: true
   # Self-referential associations
   has_many :follows
   has_many :follower_relationships, foreign_key: :following_id, class_name: 'Follow'

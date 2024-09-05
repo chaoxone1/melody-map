@@ -9,7 +9,7 @@
             <% if user.photo.attached? %>
               <%= cl_image_tag user.photo.key, class: "avatar" %>
             <% else %>
-              <span class="avatar-initials"><%= user.username.first(2).upcase %></span>
+              <span class="avatar-initials"><%= user.email.first(2).upcase %></span>
             <% end %>
           </div>
           <div class="avatar-name">
