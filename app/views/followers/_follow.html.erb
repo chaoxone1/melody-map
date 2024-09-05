@@ -1,0 +1,14 @@
+ <% if user_signed_in? %>
+  <% unless params[:controller] == "events" && params[:action] == "index" %>
+    <%= link_to "Details", trendsetter_path(user), class: "details-button", style: "display:block; margin-bottom:1rem;" %>
+    <% if current_user.following?(user) %>
+      <%= link_to follower_path(user), data: { turbo_method: "DELETE", turbo_frame: "_top" }, class: 'like-heart' do %>
+        <i class="fas fa-heart"></i>
+      <% end %>
+    <% else %>
+      <%= link_to follower_path(user), data: { turbo_method: "POST", turbo_frame: "_top"  }, class: 'like-heart-missing' do %>
+      <i class="far fa-heart"></i>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
