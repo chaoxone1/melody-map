@@ -76,21 +76,18 @@
             </div>
           </div>
           <div>
-           <%= turbo_frame_tag :follow_btn do %>
-             <% if current_user %>
+            <% if current_user %>
               <%= link_to "Details", trendsetter_path(@event.user), class: "details-button", style: "display:block; margin-bottom:1rem;" %>
-
-              <% if current_user.following?(@event.user) %>
-                <%= link_to follower_path(@event.user), data: { turbo_method: "DELETE" }, class: "like-heart" do %>
-                  <i class="fas fa-heart"></i>
-                <% end %>
-              <% else %>
-                <%= link_to follower_path(@event.user), data: { turbo_method: "POST" }, class: "like-heart-missing" do %>
-                  <i class="far fa-heart"></i>
-                <% end %>
+            <% if current_user.following?(@event.user) %>
+              <%= link_to follower_path(@event.user), data: { turbo_method: "DELETE" }, class: "like-heart" do %>
+                <i class="fas fa-heart"></i>
+              <% end %>
+            <% else %>
+              <%= link_to follower_path(@event.user), data: { turbo_method: "POST" }, class: "like-heart-missing" do %>
+                <i class="far fa-heart"></i>
               <% end %>
             <% end %>
-            <% end %>
+          <% end %>
           </div>
         </div>
       </div>
