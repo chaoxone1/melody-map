@@ -1,57 +1,17 @@
 class EventsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
+  skip_before_action :authenticate_user!, only: %i[index show]
+  before_action :set_event, only: %i[show edit update destroy favorite unfavorite]
 
   def index
-    @events = Event.where('date >= ?', Date.today.beginning_of_day)
+    @events = EventsFetcher.new(params, current_user).fetch
     @most_bookmarked = Event.where('date >= ?', Date.today.beginning_of_day)
-    if params[:query].present?
-      @events = Event.search_by_name_and_category(params[:query])
-    elsif params[:category].present?
-      if params[:category] == 'For You'
-        preferred_categories = current_user.categories.split(',')
-        @events = @events.where(category: preferred_categories)
-      else
-        @events = @events.where(category: params[:category])
-      end
-    end
-
-    case params[:view]
-    when 'all'
-      # @events = Event.where('date >= ?', Date.today.beginning_of_day)
-    when 'today'
-      @events = @events.where(date: Date.today.beginning_of_day..Date.today.end_of_day)
-    when 'week'
-      @events = @events.where(date: Date.today.beginning_of_week..Date.today.end_of_week)
-    when 'for_you'
-      preferred_categories = current_user.categories
-      @events = @events.where(category: preferred_categories)
-    else
-      @events = @events.limit(6)
-    end
-
-    # Map loading for showing locations of Events
-    @markers = @events.geocoded.map do |event|
-      {
-        lat: event.latitude,
-        lng: event.longitude,
-        info_window_html: render_to_string(partial: "info_window", locals: { event: event }),
-        marker_html: render_to_string(partial: "marker")
-      }
-    end
-
+    @markers = MarkersHelper.generate(@events)
     @top3_trendsetters = top3_trendsetters
   end
 
   def show
-    @event = Event.find(params[:id])
-    @markers = [{
-      lat: @event.latitude,
-      lng: @event.longitude,
-      info_window_html: render_to_string(partial: "info_window", locals: { event: @event }),
-    }]
-    @message = Message.new
-    @message.user = current_user
+    @markers = MarkersHelper.generate([@event])
+    @message = Message.new(user: current_user)
   end
 
   def new
@@ -69,8 +29,7 @@ class EventsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @event.update(event_params)
@@ -103,21 +62,12 @@ class EventsController < ApplicationController
 
   def my_events
     @events = current_user.events
-    if params[:query].present?
-    end
+    @events = @events.search_by_name_and_category(params[:query]) if params[:query].present?
   end
 
   def bookmark
-    @event = Event.find(params[:id])
     current_user.bookmark(@event)
     redirect_to @event, notice: 'Event bookmarked successfully.'
-  end
-
-  def top3_trendsetters
-    @trendsetters = User.left_joins(:follows)
-    .group('users.id')
-    .order('COUNT(follows.following_id) DESC')
-    .limit(4)
   end
 
   private
@@ -128,5 +78,12 @@ class EventsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:id])
+  end
+
+  def top3_trendsetters
+    User.left_joins(:follows)
+        .group('users.id')
+        .order('COUNT(follows.following_id) DESC')
+        .limit(4)
   end
 end

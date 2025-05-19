@@ -21,7 +21,7 @@ class User < ApplicationRecord
   has_many :following_relationships, foreign_key: :user_id, class_name: 'Follow'
   has_many :following, through: :following_relationships, source: :following
 
-  #Notifications
+  # Notifications
   # has_many :notifications, foreign_key: :recipient_id
   # has_many :active_notifications, -> { where(read_at: nil) }, class_name: 'Notification', foreign_key: :recipient_id
   has_many :notifications, as: :recipient, dependent: :destroy, class_name: "Noticed::Notification"
@@ -36,6 +36,7 @@ class User < ApplicationRecord
 
   def following?(other_user)
     return false if other_user.nil?
+
     following_relationships.exists?(following_id: other_user.id)
   end
 end

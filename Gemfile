@@ -1,6 +1,5 @@
 source "https://rubygems.org"
 
-ruby "3.1.2"
 gem "faker"
 gem "geocoder"
 gem "pg_search"
@@ -12,7 +11,7 @@ gem "rails", "~> 7.1.4"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
-#Gem for the Bookmark logic
+# Gem for the Bookmark logic
 gem 'acts_as_favoritor'
 
 # Use postgresql as the database for Active Record
@@ -45,7 +44,7 @@ gem "jbuilder"
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mswin mswin64 mingw x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[mswin mswin64 mingw x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -63,7 +62,10 @@ gem "sassc-rails"
 group :development, :test do
   gem "dotenv-rails"
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
+  gem "debug", platforms: %i[mri mswin mswin64 mingw x64_mingw]
+  gem "ostruct"
+  gem "brakeman", require: false
+  gem "rubocop-rails-omakase", require: false
 end
 
 group :development do
@@ -76,7 +78,7 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 
-  gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
+  gem "error_highlight", "~> 0.7.0", platforms: [:ruby]
 end
 
 group :test do

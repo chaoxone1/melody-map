@@ -25,12 +25,12 @@ class FollowNotifier < ApplicationNotifier
   #
   deliver_by :action_cable do |config|
     config.channel = "NotificationsChannel"
-    config.stream = ->{ recipient }
-    config.message = ->{ params.merge(user_id: recipient.id) }
+    config.stream = -> { recipient }
+    config.message = -> { params.merge(user_id: recipient.id) }
   end
 
   def broadcast_notification_count
-    recipient = params[:recipient]  # Pass the recipient when triggering the notification
+    recipient = params[:recipient] # Pass the recipient when triggering the notification
     # unread_count = recipient.notifications.unread.count
     p recipient
     broadcast_update_to "notification_#{recipient.id}",

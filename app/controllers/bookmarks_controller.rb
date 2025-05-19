@@ -1,17 +1,38 @@
 class BookmarksController < ApplicationController
-
   def index
-    all_favorite_events = current_user.all_favorites.map(&:favoritable).select { |e| e.is_a?(Event) }
-    @upcoming_events = current_user.all_favorites.select do |event|
-      event.favoritable.date >= Date.today
-    end
-    @past_events = current_user.all_favorites.select do |event|
-      event.favoritable.date < Date.today
-    end
+    @upcoming_events = upcoming_favorites
+    @past_events = past_favorites
+    @geocoded_events = geocoded_favorite_events
 
-    @geocoded_events = all_favorite_events.select(&:geocoded?)
+    @markers = generate_markers(@geocoded_events)
+  end
 
-    @markers = @geocoded_events.map do |event|
+  def create
+  end
+
+  def destroy
+  end
+
+  private
+
+  def all_favorite_events
+    current_user.all_favorites.map(&:favoritable).select { |e| e.is_a?(Event) }
+  end
+
+  def upcoming_favorites
+    current_user.all_favorites.select { |event| event.favoritable.date >= Date.today }
+  end
+
+  def past_favorites
+    current_user.all_favorites.select { |event| event.favoritable.date < Date.today }
+  end
+
+  def geocoded_favorite_events
+    all_favorite_events.select(&:geocoded?)
+  end
+
+  def generate_markers(events)
+    events.map do |event|
       {
         lat: event.latitude,
         lng: event.longitude,
@@ -19,13 +40,5 @@ class BookmarksController < ApplicationController
         marker_html: render_to_string(partial: "events/marker")
       }
     end
-  end
-
-  def create
-
-  end
-
-  def destroy
-
   end
 end
